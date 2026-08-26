@@ -11,4 +11,4 @@ Route::get('/', [PublicController::class, 'home'])->name('homepage');
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate']);
 
-Route::get('/add-post', PostCreate::class)->name('post.create');
+Route::get('/add-post', PostCreate::class)->name('post.create')->middleware('auth');

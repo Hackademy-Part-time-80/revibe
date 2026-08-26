@@ -35,6 +35,7 @@ class PostCreate extends Component
         $this->validate();
         $this->user_id = Auth::user()->id;
 
+
         Post::create([
             'title' => $this->title,
             'price' => $this->price,

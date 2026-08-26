@@ -4,9 +4,8 @@
             <div class="col-12">
                 <h1 class="display-3 fw-bold mb-3">ReVibe</h1>
                 <p class="lead text-muted">Dai nuova vita ai tuoi articoli preferiti</p>
-                <button class="btn btn-primary btn-lg rounded-pill px-4 py-2 shadow-sm btn-cta">
-                    <i class="bi bi-plus-lg me-2"></i>Crea il tuo Annuncio
-                </button>
+                <a href="{{ route('post.create') }}"
+                    class="btn btn-primary btn-lg rounded-pill px-4 py-2 shadow-sm btn-cta">Crea un annuncio</a>
             </div>
 
         </div>
