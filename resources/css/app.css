@@ -1,1 +1,9 @@
 @import 'bootstrap';
+
+.btn-cta {
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.btn-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 .75rem 1.5rem rgba(var(--bs-primary-rgb), .35) !important;
+}
