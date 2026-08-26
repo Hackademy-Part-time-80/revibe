@@ -1,33 +1,50 @@
-<form class="mt-5" wire:submit='postStore'>
-    @csrf
+<form class="bg-body-tertiary shadow rounded p-5 my-5" wire:submit="postStore">
+    <h2 class="text-center fw-bold mb-4">Crea il tuo annuncio</h2>
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+    <div class="mb-3">
+        <label for="title" class="form-label">Titolo</label>
+        <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" wire:model="title"
+            placeholder="Es. Divano in pelle usato">
+        @error('title')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <div class="mb-3">
+        <label for="description" class="form-label">Descrizione</label>
+        <textarea class="form-control @error('description') is-invalid @enderror" id="description" rows="6"
+            wire:model.blur="description" placeholder="Descrivi il tuo articolo..."></textarea>
+        @error('description')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="price" class="form-label">Prezzo</label>
+            <input type="text" class="form-control @error('price') is-invalid @enderror" id="price"
+                wire:model.blur="price" placeholder="0,00 €">
+            @error('price')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
-    @endif
-    <div class="mb-3">
-        <label for="title" class="form-label">Titolo:</label>
-        <input type="text" id="title" wire:model="title" class="form-control">
+        <div class="col-md-6 mb-3">
+            <label for="category" class="form-label">Categoria</label>
+            <select id="category" wire:model.blur="category"
+                class="form-select @error('category') is-invalid @enderror">
+                <option value="" selected disabled>Seleziona una Categoria</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+            @error('category')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
     </div>
 
-    <div class="mb-3">
-        <label for="price" class="form-label">Prezzo:</label>
-        <input type="number" step="0.01" min="0" id="price" wire:model="price" class="form-control">
+    <div class="d-flex justify-content-center mt-4">
+        <button type="submit" class="btn btn-primary btn-lg px-5 rounded-pill">Crea</button>
     </div>
-
-    <div class="mb-3">
-        <label for="body" class="form-label">Descrizione:</label>
-        <textarea id="body" cols="20" rows="10" wire:model="description" class="form-control"></textarea>
-    </div>
-
-    <div class="mb-5 d-flex justify-content-end">
-        <button type="submit" class="btn btn-primary">Crea</button>
-    </div>
-
 </form>
