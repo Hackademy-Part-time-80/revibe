@@ -1,42 +1,23 @@
 <x-layouts.app>
-<div class="container d-flex justify-content-center align-items-center vh-100">
-        
-        <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
-            <h3 class="text-center mb-4">Accedi</h3>
+    <div class="container-fluid text-center bg-body-tertiary">
+        <div class="row vh-100 justify-content-center align-items-center">
+            <div class="col-12">
+                <h1 class="display-3 fw-bold mb-3">ReVibe</h1>
+                <p class="lead text-muted">Dai nuova vita ai tuoi articoli preferiti</p>
+            </div>
+        </div>
 
-            <form action="{{ route('login') }}" method="POST">
-                <!-- La direttiva CSRF è obbligatoria in Laravel per i form POST -->
-                @csrf
-
-                <!-- Campo Email -->
-                <div class="mb-3 text-center">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control text-center" id="email" name="email" required autofocus>
+        <div class="row justify-content-center py-5 g-4">
+            {{-- @forelse ($articles as $article) --}}
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    {{-- <x-card :article="$article" class="h-100 shadow-sm border-0 rounded-4 hover-lift" /> --}}
                 </div>
-
-                <!-- Campo Password -->
-                <div class="mb-4 text-center">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control text-center" id="password" name="password" required>
+            {{-- @empty --}}
+                <div class="col-12 py-5">
+                    <i class="bi bi-inbox display-1 text-muted d-block mb-3"></i>
+                    <h3 class="text-muted">Non sono ancora stati creati articoli</h3>
                 </div>
-
-                <!-- Bottone di Accesso -->
-                <div class="d-grid mt-2">
-                    <button type="submit" class="btn btn-primary">Entra</button>
-                </div>
-
-                
-                <!-- Sezione Registrati -->
-                <div class="text-center mt-4">
-                    <span class="text-muted" style="font-size: 0.9rem;">Non hai un account?</span>
-                    <div class="d-grid mt-1">
-                        
-                        <a href="{{ route('register') }}" class="btn btn-sm btn-outline-secondary">Registrati</a>
-                    </div>
-                </div>
-            </form>
-            
-            
+            {{-- @endforelse --}}
         </div>
     </div>
 </x-layouts.app>
