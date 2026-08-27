@@ -1,61 +1,81 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
-  <div class="container-fluid">
-    <a class="navbar-brand fw-bold" href="{{ route('homepage') }}">ReVibe</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      
-      <!-- Link centrali -->
-      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ route('homepage') }}">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Annunci</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('post.create') }}">Crea Annuncio</a>
-        </li>
-      </ul>
-      
-      <!-- Barra di ricerca -->
-      <form class="d-flex me-4 mb-2 mb-lg-0" role="search">
-        <input class="form-control me-2 rounded-pill" type="search" placeholder="Cerca articoli..." aria-label="Search">
-        <button class="btn btn-outline-success rounded-pill px-4" type="submit">Cerca</button>
-      </form>
-      
-      <!-- Area Utente -->
-      <div class="d-flex align-items-center">
-        {{-- Cosa vedono gli ospiti (non loggati) --}}
-        @guest
-          <a href="{{ route('login') }}" class="btn btn-outline-primary me-2 rounded-pill px-4">Accedi</a>
-          <a href="{{ route('register') }}" class="btn btn-primary rounded-pill px-4">Registrati</a>
-        @endguest
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="{{ route('homepage') }}">ReVibe</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        {{-- Cosa vede l'utente loggato --}}
-        @auth
-          <div class="dropdown">
-            <button class="btn btn-light dropdown-toggle d-flex align-items-center rounded-pill px-3 border" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-person-circle me-2 fs-5 text-primary"></i>
-              <span class="fw-semibold">{{ Auth::user()->name }}</span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
-              <li>
-                  <!-- Il logout in Laravel deve essere fatto tramite un form (POST) per sicurezza -->
-                  <form action="{{ route('logout') }}" method="POST">
-                      @csrf
-                      <button type="submit" class="dropdown-item text-danger d-flex align-items-center">
-                          <i class="bi bi-box-arrow-right me-2"></i> Esci
-                      </button>
-                  </form>
-              </li>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <!-- Link centrali -->
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ route('homepage') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Annunci</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('post.create') }}">Crea Annuncio</a>
+                </li>
+
+                {{-- Aggiunta dropdown categorie --}}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Categorie Prodotti
+                    </a>
+                    <ul class="dropdown-menu">
+                        @foreach ($categories as $category)
+                            <li>
+                                <a class="dropdown-item"
+                                    href="{{ route('categoryView', ['category' => $category]) }}">{{ $category->name }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+
             </ul>
-          </div>
-        @endauth
-      </div>
 
+            <!-- Barra di ricerca -->
+            <form class="d-flex me-4 mb-2 mb-lg-0" role="search">
+                <input class="form-control me-2 rounded-pill" type="search" placeholder="Cerca articoli..."
+                    aria-label="Search">
+                <button class="btn btn-outline-success rounded-pill px-4" type="submit">Cerca</button>
+            </form>
+
+            <!-- Area Utente -->
+            <div class="d-flex align-items-center">
+                {{-- Cosa vedono gli ospiti (non loggati) --}}
+                @guest
+                    <a href="{{ route('login') }}" class="btn btn-outline-primary me-2 rounded-pill px-4">Accedi</a>
+                    <a href="{{ route('register') }}" class="btn btn-primary rounded-pill px-4">Registrati</a>
+                @endguest
+
+                {{-- Cosa vede l'utente loggato --}}
+                @auth
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle d-flex align-items-center rounded-pill px-3 border"
+                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle me-2 fs-5 text-primary"></i>
+                            <span class="fw-semibold">{{ Auth::user()->name }}</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
+                            <li>
+                                <!-- Il logout in Laravel deve essere fatto tramite un form (POST) per sicurezza -->
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item text-danger d-flex align-items-center">
+                                        <i class="bi bi-box-arrow-right me-2"></i> Esci
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                @endauth
+            </div>
+
+        </div>
     </div>
-  </div>
 </nav>

@@ -23,6 +23,6 @@ class PublicController extends Controller
     public function categoryView(Category $category)
     {
         $postsByCategory = $category->posts;
-        return view('posts.category', compact('postsByCategory'));
+        return view('posts.category', compact('category', 'postsByCategory'));
     }
 }
