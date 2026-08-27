@@ -13,3 +13,5 @@ Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate']);
 
 Route::get('/add-post', PostCreate::class)->name('post.create')->middleware('auth');
+Route::get('/posts', [PublicController::class, 'postsView'])->name('index');
+Route::get('/category/{category}', [PublicController::class, 'categoryView'])->name('categoryView');
