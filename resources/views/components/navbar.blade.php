@@ -40,13 +40,6 @@
 
             </ul>
 
-            <!-- Barra di ricerca -->
-            <form class="d-flex me-4 mb-2 mb-lg-0" role="search">
-                <input class="form-control me-2 rounded-pill" type="search" placeholder="Cerca articoli..."
-                    aria-label="Search">
-                <button class="btn btn-outline-success rounded-pill px-4" type="submit">Cerca</button>
-            </form>
-
             <!-- Area Utente -->
             <div class="d-flex align-items-center">
                 {{-- Cosa vedono gli ospiti (non loggati) --}}
