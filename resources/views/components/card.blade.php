@@ -22,7 +22,7 @@
 
         <!-- Bottoni in basso -->
         <div class="d-grid gap-2 mt-auto">
-            <a href="{{ route('posts.show', $post) }}" class="btn btn-dark rounded-pill py-2 fw-semibold transition-all">
+            <a href="{{ route('posts.show', $post) }}" class="btn btn-primary rounded-pill py-2 fw-semibold transition-all">
                 Scopri i dettagli
             </a>
         </div>
