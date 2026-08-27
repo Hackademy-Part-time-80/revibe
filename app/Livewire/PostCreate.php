@@ -12,11 +12,11 @@ class PostCreate extends Component
 {
     use WithFileUploads;
 
-    public string $title;
-    public float $price;
-    public string $description;
+    public $title = '';
+    public $price = '';
+    public $description = '';
     public int $user_id;
-    public int $category_id;
+    public $category_id = '';
 
     protected $rules = [
         'title' => 'required',

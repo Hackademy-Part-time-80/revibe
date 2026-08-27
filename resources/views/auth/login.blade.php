@@ -18,7 +18,7 @@
                         <input type="password" class="form-control" id="password" name="password">
                     </div>
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary">Accedi</button>
+                        <a href="{{ route('login') }}" class="btn btn-primary">Accedi</a>
                     </div>
                     <div class="text-center mt-3">
                         <small>

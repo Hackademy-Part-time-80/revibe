@@ -12,6 +12,14 @@
 <body>
 
     <x-navbar />
+    @if (session()->has('successMessage'))
+    <div class="container mt-4">
+        <div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
+            <strong>Ottimo!</strong> {{ session('successMessage') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+@endif
     {{ $slot }}
     <x-footer />
 

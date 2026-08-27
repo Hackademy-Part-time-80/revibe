@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Livewire\PostCreate;
 use Illuminate\Support\Facades\Auth;
 
+
 Route::get('/', [PublicController::class, 'home'])->name('homepage');
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

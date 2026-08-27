@@ -31,14 +31,14 @@
 
         <div class="col-md-6 mb-3">
             <label for="category" class="form-label">Categoria</label>
-            <select id="category" wire:model.blur="category"
-                class="form-select @error('category') is-invalid @enderror">
+            <select id="category" wire:model.blur="category_id"
+                class="form-select @error('category_id') is-invalid @enderror">
                 <option value="" selected disabled>Seleziona una Categoria</option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
-            @error('category')
+            @error('category_id')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
