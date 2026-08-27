@@ -8,10 +8,12 @@
                     class="btn btn-primary btn-lg rounded-pill px-4 py-2 shadow-sm btn-cta">Crea un nuovo articolo</a>
             </div>
         </div>
+    </div>
 
-        <div class="row justify-content-center py-5 g-4">
+    <div class="container py-5">
+        <div class="row justify-content-center g-4">
             @forelse ($posts as $post)
-                <div class="col-12 col-md-6 col-lg-4">
+                <div class="col-11 col-sm-6 col-md-4 col-lg-3">
                     <x-card :post="$post" />
                 </div>
             @empty

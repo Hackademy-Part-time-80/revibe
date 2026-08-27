@@ -4,9 +4,11 @@
     <!-- Sezione Immagine con Badge sovrapposto -->
     <div class="position-relative">
         <img src="https://picsum.photos/500/350?random={{ $post->id ?? rand(1, 1000) }}" class="card-img-top" alt="Immagine articolo" style="height: 250px; object-fit: cover;">
-        <span class="position-absolute top-0 start-0 bg-info text-white px-3 py-1 m-3 rounded-pill small fw-bold shadow-sm" style="opacity: 0.9;">
-            {{ $post->category->name ?? 'Categoria' }}
-        </span>
+        <a href="{{ route('categoryView', $post->category) }}" class="position-absolute top-0 start-0 text-decoration-none">
+            <span class="bg-info text-white px-3 py-1 m-3 rounded-pill small fw-bold shadow-sm d-inline-block hover-opacity" style="opacity: 0.9;">
+                {{ $post->category->name ?? 'Categoria' }}
+            </span>
+        </a>
     </div>
     
     <!-- Corpo della card -->
@@ -20,7 +22,7 @@
 
         <!-- Bottoni in basso -->
         <div class="d-grid gap-2 mt-auto">
-            <a href="#" class="btn btn-dark rounded-pill py-2 fw-semibold transition-all">
+            <a href="{{ route('posts.show', $post) }}" class="btn btn-dark rounded-pill py-2 fw-semibold transition-all">
                 Scopri i dettagli
             </a>
         </div>
