@@ -3,7 +3,25 @@
 .btn-cta {
     transition: transform .2s ease, box-shadow .2s ease;
 }
+
 .btn-cta:hover {
     transform: translateY(-3px);
     box-shadow: 0 .75rem 1.5rem rgba(var(--bs-primary-rgb), .35) !important;
+}
+
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.15)!important;
+}
+
+.card-img-top {
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.05);
 }

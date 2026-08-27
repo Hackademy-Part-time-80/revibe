@@ -9,18 +9,23 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <x-navbar />
-    @if (session()->has('successMessage'))
-    <div class="container mt-4">
-        <div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
-            <strong>Ottimo!</strong> {{ session('successMessage') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    </div>
-@endif
-    {{ $slot }}
+    
+    <main class="flex-grow-1">
+        @if (session()->has('successMessage'))
+            <div class="container mt-4">
+                <div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
+                    <strong>Ottimo!</strong> {{ session('successMessage') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        @endif
+        
+        {{ $slot }}
+    </main>
+
     <x-footer />
 
 </body>

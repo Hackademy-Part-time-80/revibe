@@ -18,14 +18,25 @@ class PostCreate extends Component
     public int $user_id;
     public $category_id = '';
 
+
+
+    // MODIFICATORE VALUE DEI REQUIRED//
     protected $rules = [
-        'title' => 'required',
-        'price' => 'required',
-        'description' => 'required'
+        'title' => 'required|min:3|max:255',
+        'price' => 'required|numeric|min:0.1',
+        'description' => 'required|min:10',
+        'category_id' => 'required|exists:categories,id'
     ];
 
+     // MESSAGGI ERROR DEI REQUIRED//
     protected $messages = [
-        '*.required' => 'il campo :attribute è richiesto'
+        '*.required' => 'Il campo :attribute è obbligatorio.',
+        'title.min' => 'Il titolo deve avere almeno 3 caratteri.',
+        'title.max' => 'Il titolo non può superare i 255 caratteri.',
+        'price.numeric' => 'Il prezzo deve essere un numero.',
+        'price.min' => 'Il prezzo deve essere maggiore di zero.',
+        'description.min' => 'La descrizione deve essere di almeno 10 caratteri.',
+        'category_id.exists' => 'La categoria selezionata non è valida.'
     ];
 
     public function postStore()

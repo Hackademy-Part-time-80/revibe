@@ -1,0 +1,242 @@
+diff --git a/.gitignore b/.gitignore
+index 7be55e2..d6f2f0e 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -25,3 +25,4 @@ _ide_helper.php
+ Homestead.json
+ Homestead.yaml
+ Thumbs.db
++.vscode
+diff --git a/app/Http/Controllers/AuthController.php b/app/Http/Controllers/AuthController.php
+deleted file mode 100644
+index 6429773..0000000
+--- a/app/Http/Controllers/AuthController.php
++++ /dev/null
+@@ -1,22 +0,0 @@
+-<?php
+-
+-namespace App\Http\Controllers;
+-
+-use Illuminate\Http\Request;
+-
+-class AuthController extends Controller
+-{
+-    public function showLogin()
+-    {
+-        return view('auth.login');
+-    }
+-
+-    public function authenticate(Request $request)
+-    {
+-
+-        $credentials = $request->validate([
+-            'email' => ['required', 'email'],
+-            'password' => ['required'],
+-        ]);
+-    }
+-}
+diff --git a/resources/css/app.css b/resources/css/app.css
+index 3fd80e7..3a625d7 100644
+--- a/resources/css/app.css
++++ b/resources/css/app.css
+@@ -3,7 +3,25 @@
+ .btn-cta {
+     transition: transform .2s ease, box-shadow .2s ease;
+ }
++
+ .btn-cta:hover {
+     transform: translateY(-3px);
+     box-shadow: 0 .75rem 1.5rem rgba(var(--bs-primary-rgb), .35) !important;
++}
++
++.card {
++    transition: all 0.3s ease;
++}
++
++.card:hover {
++    transform: translateY(-8px);
++    box-shadow: 0 1rem 3rem rgba(0,0,0,.15)!important;
++}
++
++.card-img-top {
++    transition: transform 0.5s ease;
++}
++
++.card:hover .card-img-top {
++    transform: scale(1.05);
+ }
+\ No newline at end of file
+diff --git a/resources/views/components/card.blade.php b/resources/views/components/card.blade.php
+index 14b05ae..be610e1 100644
+--- a/resources/views/components/card.blade.php
++++ b/resources/views/components/card.blade.php
+@@ -1,12 +1,26 @@
+- <div class="card mx-auto card-w shadow text-center mb-3">
+-            <img src="https://picsum.photos/200" class="card-img-top" alt="Immagine">
+-            <div class="card-body">
+-                <h4 class="card-title"><!--qui ci vuoe le graffe article->title --></h4>
+-                <h6 class="card-subtitle text-body-secondary"><!-- qui ci vuoe le graffe article->price --></h6>
+-                <div class="d-flex justify-content-evenly align-items-center mt-5">
+-                    <a href="" class="btn btn-primary">Dettaglio</a>
+-                    <a href="" class="btn btn-outline-info">Categoria</a>
+-                </div>
++<div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
++    <!-- Sezione Immagine con Badge sovrapposto -->
++    <div class="position-relative">
++        <img src="https://picsum.photos/500/350?random={{ rand(1, 1000) }}" class="card-img-top" alt="Immagine articolo" style="height: 250px; object-fit: cover;">
++        <span class="position-absolute top-0 start-0 bg-info text-white px-3 py-1 m-3 rounded-pill small fw-bold shadow-sm" style="opacity: 0.9;">
++            Categoria
++        </span>
++    </div>
++    
++    <!-- Corpo della card -->
++    <div class="card-body d-flex flex-column p-4">
++        <h5 class="card-title fw-bold text-dark mb-1">Titolo Articolo</h5>
++        <h6 class="fs-5 text-primary fw-bold mb-3">€ 19.99</h6>
++        
++        <p class="card-text text-muted mb-4 flex-grow-1" style="font-size: 0.95rem;">
++            Una descrizione elegante e ben spaziata per dare valore al tuo prodotto e renderlo più accattivante agli occhi degli utenti.
++        </p>
+ 
+-            </div>
+-        </div>
+\ No newline at end of file
++        <!-- Bottoni in basso -->
++        <div class="d-grid gap-2 mt-auto">
++            <a href="#" class="btn btn-dark rounded-pill py-2 fw-semibold transition-all">
++                Scopri i dettagli
++            </a>
++        </div>
++    </div>
++</div>
+\ No newline at end of file
+diff --git a/resources/views/components/footer.blade.php b/resources/views/components/footer.blade.php
+index c22e83f..b7e0a86 100644
+--- a/resources/views/components/footer.blade.php
++++ b/resources/views/components/footer.blade.php
+@@ -1,20 +1,20 @@
+-<div class="container">
+-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top fixed-bottom">
+-        <p class="col-md-4 mb-0 text-body-secondary">© 2026 Revibe srl</p>
+-        <a href="/"
+-            class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+-            aria-label="Bootstrap">
+-            <svg class="bi me-2" width="40" height="32" aria-hidden="true">
+-                <use xlink:href="#bootstrap"></use>
+-            </svg>
+-        </a>
+-        <ul class="nav col-md-4 justify-content-end">
+-            <li class="nav-item">
+-                <a href="#" class="nav-link px-2 text-body-secondary">Home</a>
+-            </li>
+-            <li class="nav-item">
+-                <a href="#" class="nav-link px-2 text-body-secondary">Annunci</a>
+-            </li>
+-        </ul>
+-    </footer>
++<div class="bg-light mt-auto border-top">
++    <div class="container">
++        <footer class="d-flex flex-wrap justify-content-between align-items-center py-4 my-2">
++            <p class="col-md-4 mb-0 text-body-secondary">© 2026 ReVibe srl</p>
++            <a href="/"
++                class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
++                aria-label="Bootstrap">
++                <h4 class="fw-bold mb-0 text-dark">ReVibe</h4>
++            </a>
++            <ul class="nav col-md-4 justify-content-end">
++                <li class="nav-item">
++                    <a href="/" class="nav-link px-2 text-body-secondary">Home</a>
++                </li>
++                <li class="nav-item">
++                    <a href="#" class="nav-link px-2 text-body-secondary">Annunci</a>
++                </li>
++            </ul>
++        </footer>
++    </div>
+ </div>
+diff --git a/resources/views/components/layouts/app.blade.php b/resources/views/components/layouts/app.blade.php
+index 35942b6..a4bbd00 100644
+--- a/resources/views/components/layouts/app.blade.php
++++ b/resources/views/components/layouts/app.blade.php
+@@ -9,10 +9,14 @@
+     @vite(['resources/css/app.css', 'resources/js/app.js'])
+ </head>
+ 
+-<body>
++<body class="d-flex flex-column min-vh-100">
+ 
+     <x-navbar />
+-    {{ $slot }}
++    
++    <main class="flex-grow-1">
++        {{ $slot }}
++    </main>
++
+     <x-footer />
+ 
+ </body>
+diff --git a/resources/views/homepage.blade.php b/resources/views/homepage.blade.php
+index 5b1bb3e..24e53ae 100644
+--- a/resources/views/homepage.blade.php
++++ b/resources/views/homepage.blade.php
+@@ -1,6 +1,6 @@
+ <x-layouts.app>
+     <div class="container-fluid text-center bg-body-tertiary">
+-        <div class="row vh-100 justify-content-center align-items-center">
++        <div class="row py-5 mt-5 justify-content-center align-items-center">
+             <div class="col-12">
+                 <h1 class="display-3 fw-bold mb-3">ReVibe</h1>
+                 <p class="lead text-muted">Dai nuova vita ai tuoi articoli preferiti</p>
+@@ -11,16 +11,24 @@ class="btn btn-primary btn-lg rounded-pill px-4 py-2 shadow-sm btn-cta">Crea un
+         </div>
+ 
+         <div class="row justify-content-center py-5 g-4">
+-            {{-- @forelse ($articles as $article) --}}
+-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+-                {{-- <x-card :article="$article" class="h-100 shadow-sm border-0 rounded-4 hover-lift" /> --}}
+-            </div>
+-            {{-- @empty --}}
+-            <div class="col-12 py-5">
+-                <i class="bi bi-inbox display-1 text-muted d-block mb-3"></i>
+-                <h3 class="text-muted">Non sono ancora stati creati articoli</h3>
+-            </div>
+-            {{-- @endforelse --}}
++            <!-- Mostro 6 card statiche di esempio con griglia aggiornata -->
++            @for ($i = 0; $i < 6; $i++)
++                <div class="col-12 col-md-6 col-lg-4">
++                    <x-card />
++                </div>
++            @endfor
++            
++            {{-- Quando ci saranno i dati, usa questo codice: --}}
++            {{-- @forelse ($articles as $article)
++                <div class="col-12 col-md-6 col-lg-4">
++                    <x-card :article="$article" />
++                </div>
++            @empty
++                <div class="col-12 py-5 text-center">
++                    <i class="bi bi-inbox display-1 text-muted d-block mb-3"></i>
++                    <h3 class="text-muted">Non sono ancora stati creati articoli</h3>
++                </div>
++            @endforelse --}}
+         </div>
+     </div>
+ </x-layouts.app>
+diff --git a/routes/web.php b/routes/web.php
+index 0b65d99..330536a 100644
+--- a/routes/web.php
++++ b/routes/web.php
+@@ -2,13 +2,10 @@
+ 
+ use App\Http\Controllers\PublicController;
+ use Illuminate\Support\Facades\Route;
+-use App\Http\Controllers\AuthController;
+ use App\Livewire\PostCreate;
+ use Illuminate\Support\Facades\Auth;
+ 
+ Route::get('/', [PublicController::class, 'home'])->name('homepage');
+ 
+-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+-Route::post('/login', [AuthController::class, 'authenticate']);
+ 
+ Route::get('/add-post', PostCreate::class)->name('post.create')->middleware('auth');

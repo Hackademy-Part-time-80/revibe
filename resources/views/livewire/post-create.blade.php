@@ -4,7 +4,7 @@
     <div class="mb-3">
         <label for="title" class="form-label">Titolo</label>
         <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" wire:model="title"
-            placeholder="Es. Divano in pelle usato">
+            placeholder="Es. Divano in pelle usato" required minlength="3" maxlength="255">
         @error('title')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -13,7 +13,7 @@
     <div class="mb-3">
         <label for="description" class="form-label">Descrizione</label>
         <textarea class="form-control @error('description') is-invalid @enderror" id="description" rows="6"
-            wire:model.blur="description" placeholder="Descrivi il tuo articolo..."></textarea>
+            wire:model.blur="description" placeholder="Descrivi il tuo articolo..." required minlength="10"></textarea>
         @error('description')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -22,8 +22,8 @@
     <div class="row">
         <div class="col-md-6 mb-3">
             <label for="price" class="form-label">Prezzo</label>
-            <input type="text" class="form-control @error('price') is-invalid @enderror" id="price"
-                wire:model.blur="price" placeholder="0,00 €">
+            <input type="number" step="0.01" min="0.1" class="form-control @error('price') is-invalid @enderror" id="price"
+                wire:model.blur="price" placeholder="0.00" required>
             @error('price')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -32,7 +32,7 @@
         <div class="col-md-6 mb-3">
             <label for="category" class="form-label">Categoria</label>
             <select id="category" wire:model.blur="category_id"
-                class="form-select @error('category_id') is-invalid @enderror">
+                class="form-select @error('category_id') is-invalid @enderror" required>
                 <option value="" selected disabled>Seleziona una Categoria</option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>

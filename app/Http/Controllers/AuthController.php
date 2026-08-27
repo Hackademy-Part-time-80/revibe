@@ -26,7 +26,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             
-            return redirect()->route('home', ['id' => Auth::id()]);
+            return redirect()->route('homepage');
         }
 
         
