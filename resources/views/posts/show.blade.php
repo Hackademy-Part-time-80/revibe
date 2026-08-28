@@ -17,7 +17,11 @@
                 </div>
                 
                 <h1 class="display-5 fw-bold text-dark mb-3">{{ $post->title }}</h1>
-                <h2 class="fs-2 text-primary fw-bold mb-4">€ {{ number_format($post->price, 2, ',', '.') }}</h2>
+                <div class="mb-4">
+                    <span class="badge bg-primary text-white rounded-3 px-4 py-2 fs-4 shadow-sm">
+                        € {{ number_format($post->price, 2, ',', '.') }}
+                    </span>
+                </div>
                 
                 <div class="mb-4">
                     <p class="text-muted small mb-3 border-bottom pb-3">

@@ -14,7 +14,11 @@
     <!-- Corpo della card -->
     <div class="card-body d-flex flex-column p-4">
         <h5 class="card-title fw-bold text-dark mb-1">{{ $post->title }}</h5>
-        <h6 class="fs-5 text-primary fw-bold mb-3">€ {{ number_format($post->price, 2, ',', '.') }}</h6>
+        <div class="mb-3">
+            <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-2 fs-6 shadow-sm">
+                € {{ number_format($post->price, 2, ',', '.') }}
+            </span>
+        </div>
         
         <p class="card-text text-muted mb-4 flex-grow-1" style="font-size: 0.95rem;">
             {{ Str::limit($post->description, 100) }}
