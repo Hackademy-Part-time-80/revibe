@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
+<nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm sticky-top">
     <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="{{ route('homepage') }}">
     <img src="{{ Vite::asset('resources/images/revibe-logo.svg') }}" alt="ReVibe" height="36">
