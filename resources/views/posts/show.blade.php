@@ -23,7 +23,10 @@
                     <p class="text-muted small mb-3 border-bottom pb-3">
                         <i class="bi bi-person-circle me-1"></i> Pubblicato da <strong>{{ $post->user->name ?? 'Utente sconosciuto' }}</strong> 
                         <span class="mx-2">|</span>
-                        <i class="bi bi-calendar-event me-1"></i> {{ $post->created_at->format('d/m/Y \a\l\l\e H:i') }}
+                        <i class="bi bi-calendar-event me-1"></i>
+                        <span class="local-time" data-timestamp="{{ $post->created_at->toISOString() }}">
+                            {{ $post->created_at->format('d/m/Y \a\l\l\e H:i') }}
+                        </span>
                     </p>
 
                     <h5 class="fw-bold mb-2">Descrizione:</h5>
