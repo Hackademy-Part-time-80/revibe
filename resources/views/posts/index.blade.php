@@ -1,3 +1,4 @@
+
 <x-layouts.app>
     <div class="container">
         <div class="row py-5 justify-content-center align-items-center text-center">
@@ -22,8 +23,9 @@
                 </div>
             @endforelse
         </div>
-        <div class="mt-5 d-flex justify-content-center"> 
-                {{ $posts->links('bootstrap-5') }}
-            </div>
+        
+        <div class="mt-5 mb-5">
+            {{ $posts->links('components.pagination') }}
+        </div>
     </div>
 </x-layouts.app>

@@ -1,3 +1,4 @@
+
 <x-layouts.app>
     <div class="container">
         <div class="row py-5 justify-content-center align-items-center text-center">
@@ -6,7 +7,7 @@
                     Articoli della categoria
                     <span class="fst-italic text-primary">{{ $category->name }}</span>
                 </h1>
-                <p class="text-muted fs-5 mt-2">{{ $postsByCategory->count() }} articoli trovati</p>
+                <p class="text-muted fs-5 mt-2">{{ $postsByCategory->total() }} articoli trovati</p>
             </div>
         </div>
 
@@ -25,6 +26,10 @@
                     @endauth
                 </div>
             @endforelse
+        </div>
+        
+        <div class="mt-5 mb-5">
+            {{ $postsByCategory->links('components.pagination') }}
         </div>
     </div>
 </x-layouts.app>
