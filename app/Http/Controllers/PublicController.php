@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
+
 class PublicController extends Controller
 {
     public function home()
@@ -28,6 +29,6 @@ class PublicController extends Controller
 
     public function postView(Post $post)
     {
-        return view('posts.show', compact('post'));
+        return view('posts.show', compact('posts'));
     }
 }

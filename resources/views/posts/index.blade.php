@@ -21,6 +21,9 @@
                     @endauth
                 </div>
             @endforelse
+            <div class="mt-5 d-flex justify-content-center"> 
+                {{ $postsByCategory->links('bootstrap-5') }}
+            </div>
         </div>
     </div>
 </x-layouts.app>
