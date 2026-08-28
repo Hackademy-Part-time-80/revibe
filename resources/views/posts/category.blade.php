@@ -10,7 +10,7 @@
             </div>
         </div>
 
-        <div class="row g-4 justify-content-center py-4">
+        <div class="row g-4 justify-content-start py-4">
             @forelse ($postsByCategory as $post)
                 <div class="col-11 col-sm-6 col-md-4 col-lg-3">
                     <x-card :post="$post" />

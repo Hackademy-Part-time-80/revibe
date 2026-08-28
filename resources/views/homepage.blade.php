@@ -11,7 +11,7 @@
     </div>
 
     <div class="container py-5">
-        <div class="row justify-content-center g-4">
+        <div class="row justify-content-start g-4">
             @forelse ($posts as $post)
                 <div class="col-11 col-sm-6 col-md-4 col-lg-3">
                     <x-card :post="$post" />
