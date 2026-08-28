@@ -16,12 +16,14 @@ class PublicController extends Controller
 
     public function postsView()
     {
+        // riga20
         $posts = Post::orderBy('created_at', 'desc')->paginate(12);
         return view('posts.index', compact('posts'));
     }
 
     public function categoryView(Category $category)
     {
+        // riga27 modificata
         $postsByCategory = $category->posts()->orderBy('created_at', 'desc')->paginate(12);
         return view('posts.category', compact('postsByCategory', 'category'));
     }

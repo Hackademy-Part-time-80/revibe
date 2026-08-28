@@ -1,3 +1,4 @@
+<!-- componente per visualizzare numeri pagine -->
 @if ($paginator->hasPages())
     <nav class="d-flex justify-content-center mt-4">
         <ul class="pagination pagination-lg shadow-sm">

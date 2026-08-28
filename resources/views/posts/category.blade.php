@@ -27,7 +27,7 @@
                 </div>
             @endforelse
         </div>
-        
+        <!-- richiamato componente pagination -->
         <div class="mt-5 mb-5">
             {{ $postsByCategory->links('components.pagination') }}
         </div>
