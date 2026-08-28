@@ -6,7 +6,6 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-
 class PublicController extends Controller
 {
     public function home()
@@ -17,18 +16,18 @@ class PublicController extends Controller
 
     public function postsView()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(9);
         return view('posts.index', compact('posts'));
     }
 
     public function categoryView(Category $category)
     {
-        $postsByCategory = $category->posts;
+        $postsByCategory = $category->posts()->paginate(9);
         return view('posts.category', compact('postsByCategory', 'category'));
     }
 
     public function postView(Post $post)
     {
-        return view('posts.show', compact('posts'));
+        return view('posts.show', compact('post'));
     }
 }

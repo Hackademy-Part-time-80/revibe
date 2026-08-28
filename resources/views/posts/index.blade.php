@@ -3,7 +3,7 @@
         <div class="row py-5 justify-content-center align-items-center text-center">
             <div class="col-12 pt-5">
                 <h1 class="display-3 fw-bold">Tutti gli Annunci</h1>
-                <p class="text-muted fs-5 mt-2">{{ $posts->count() }} annunci disponibili su ReVibe</p>
+                <p class="text-muted fs-5 mt-2">{{ $posts->total() }} annunci disponibili su ReVibe</p>
             </div>
         </div>
         <div class="row g-4 justify-content-start py-4">
@@ -21,9 +21,9 @@
                     @endauth
                 </div>
             @endforelse
-            <div class="mt-5 d-flex justify-content-center"> 
-                {{ $postsByCategory->links('bootstrap-5') }}
-            </div>
         </div>
+        <div class="mt-5 d-flex justify-content-center"> 
+                {{ $posts->links('bootstrap-5') }}
+            </div>
     </div>
 </x-layouts.app>
