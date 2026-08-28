@@ -1,15 +1,5 @@
 <x-layouts.app>
-    <div class="container py-5 mt-5">
-        <div class="row mb-4">
-            <div class="col-12">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('homepage') }}">Home</a></li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-
+    <div class="container py-5 mt-5">        
         <div class="row align-items-center">
             <!-- Immagine Prodotto -->
             <div class="col-md-6 mb-4 mb-md-0 text-center">
