@@ -19,4 +19,4 @@ Route::get('/posts/{category:name}', [PublicController::class, 'categoryView'])-
 Route::get('/annuncio/{post}', [PublicController::class, 'postView'])->name('posts.show');
 
 
-Route::get('/revisor/index', [RevisorController::class, 'index'])->name('revisor.index');
+Route::get('/revisor/index', [RevisorController::class, 'index'])->middleware('isRevisor')->name('revisor.index');

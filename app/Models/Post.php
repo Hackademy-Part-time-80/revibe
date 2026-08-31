@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'price', 'description', 'user_id', 'category_id'];
+    protected $fillable = ['title', 'price', 'description', 'isAccepted', 'user_id', 'category_id'];
 
     public function category()
     {
@@ -17,5 +17,12 @@ class Post extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function setAccepted($value)
+    {
+        $this->isAccepted = $value;
+        $this->save();
+        return true;
     }
 }
