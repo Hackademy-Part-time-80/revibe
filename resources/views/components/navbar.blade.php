@@ -40,6 +40,14 @@
 
             </ul>
 
+            </ul>
+
+            <!-- Form di ricerca -->
+            <form action="{{ route('posts.search') }}" method="GET" class="d-flex me-3" role="search">
+                <input class="form-control me-2" type="search" name="query" placeholder="Cerca annunci..." aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Cerca</button>
+            </form>
+
             <!-- Area Utente -->
             <div class="d-flex align-items-center">
                 {{-- Cosa vedono gli ospiti (non loggati) --}}
