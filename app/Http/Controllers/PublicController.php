@@ -10,13 +10,13 @@ class PublicController extends Controller
 {
     public function home()
     {
-        $posts = Post::orderBy('created_at', 'desc')->take(6)->get();
+        $posts = Post::where('isAccepted', true)->orderBy('created_at', 'desc')->take(6)->get();
         return view('homepage', compact('posts'));
     }
 
     public function postsView()
     {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(12);
+        $posts = Post::where('isAccepted', true)->orderBy('created_at', 'desc')->paginate(12);
         return view('posts.index', compact('posts'));
     }
 

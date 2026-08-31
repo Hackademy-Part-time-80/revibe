@@ -37,6 +37,8 @@ class Post extends Model
             'title' => $this->title,
             'description' => $this->description,
             'category' => $this->category ? $this->category->name : null, 
+            'isAccepted' => $this->isAccepted,
+            'created_at' => $this->created_at,
         ];
     }
 }
