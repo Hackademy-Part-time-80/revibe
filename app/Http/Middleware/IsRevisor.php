@@ -17,7 +17,7 @@ class IsRevisor
     public function handle(Request $request, Closure $next): Response
     {
 
-        if (Auth::check() && Auth::user()->isRivisor) {
+        if (Auth::check() && Auth::user()->isRevisor) {
             return $next($request);
         }
         return redirect()->route('homepage')->with('errorMessage', 'Pagina riservata ai revisori');

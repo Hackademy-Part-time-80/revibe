@@ -11,7 +11,7 @@ class PostController extends Controller
     
     public function categoryView(Category $category)
     {
-        $postsByCategory = $category->posts()->orderBy('created_at', 'desc')->paginate(12);
+        $postsByCategory = $category->posts()->where('isAccepted', true)->orderBy('created_at', 'desc')->paginate(12);
         return view('posts.category', compact('postsByCategory', 'category'));
     }
 
@@ -30,6 +30,7 @@ class PostController extends Controller
 
         // Paginazione e ordine decrescente (Scout ordina per rilevanza di default)
         $posts = $query->orderBy('created_at', 'desc')->paginate(12);
+        $posts = Post::search($searched)->where('isAccepted', true)->orderBy('created_at', 'desc')->paginate(12);
 
         return view('posts.index', compact('posts', 'searched'));
     }

@@ -1,11 +1,14 @@
 <x-layouts.app>
-    <div class="container mt-3">
-        <!-- Bottone in alto a sinistra, sotto la navbar -->
-        <button class="btn btn-outline-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchOffcanvas" aria-controls="searchOffcanvas">
-            Cerca / Filtra
-        </button>
-    </div>
+
+    @if (session()->has('errorMessage'))
+        <div class="alert alert-danger text-center shadow rounded">
+            {{ session('errorMessage') }}
+        </div>
+    @endif
+
     <div class="container-fluid text-center bg-body-tertiary">
+        <a href="{{ route('revisor.index') }}" class="btn btn-primary">Sei revisore?</a>
+
         <div class="row py-5 mt-5 justify-content-center align-items-center">
             <div class="col-12">
                 <h1 class="display-3 fw-bold mb-3">ReVibe</h1>
