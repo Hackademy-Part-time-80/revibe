@@ -20,6 +20,6 @@ class IsRevisor
         if (Auth::check() && Auth::user()->isRivisor) {
             return $next($request);
         }
-        return redirect()->route('homepage')->with('error message', 'Pagina riservata ai revisori');
+        return redirect()->route('homepage')->with('errorMessage', 'Pagina riservata ai revisori');
     }
 }
