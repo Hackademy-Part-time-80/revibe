@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\BecomeRevisor;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class RevisorController extends Controller
 {
@@ -23,5 +26,11 @@ class RevisorController extends Controller
     {
         $post->setAccepted(false);
         return redirect()->back()->with('message', 'Hai rifiutato l\'annuncio');
+    }
+
+    public function becomeRevisor()
+    {
+        Mail::to('admin@revibe.it')->send(new BecomeRevisor(Auth::user()));
+        return redirect()->route('homepage')->with('message', 'La tua richiesta è stata inviata');
     }
 }
