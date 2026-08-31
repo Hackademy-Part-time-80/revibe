@@ -36,6 +36,7 @@ class Post extends Model
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
+            'category_id' => $this->category_id,
             'category' => $this->category ? $this->category->name : null, 
         ];
     }

@@ -16,12 +16,20 @@ class PostController extends Controller
     }
 
         
-      public function search(Request $request)
+     public function search(Request $request)
     {
         $searched = $request->input('query');
-
         
-        $posts = Post::search($searched)->orderBy('created_at', 'desc')->paginate(12);
+        // Inizializza la ricerca di base
+        $query = Post::search($searched);
+
+        // Se l'utente ha selezionato una categoria, aggiungi il filtro
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->input('category_id'));
+        }
+
+        // Paginazione e ordine decrescente (Scout ordina per rilevanza di default)
+        $posts = $query->orderBy('created_at', 'desc')->paginate(12);
 
         return view('posts.index', compact('posts', 'searched'));
     }

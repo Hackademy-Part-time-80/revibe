@@ -74,3 +74,39 @@
         </div>
     </div>
 </nav>
+
+<!-- Pannello Offcanvas che compare da destra -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="searchOffcanvas" aria-labelledby="searchOffcanvasLabel">
+    <div class="offcanvas-header border-bottom">
+        <h5 class="offcanvas-title" id="searchOffcanvasLabel">Ricerca Avanzata</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        
+        <form action="{{ route('posts.search') }}" method="GET">
+            <!-- Campo Testo -->
+            <div class="mb-4">
+                <label for="searchInput" class="form-label fw-bold">Cosa stai cercando?</label>
+                <input type="search" class="form-control" id="searchInput" name="query" placeholder="Es. programmatore, divano..." value="{{ request('query') }}">
+            </div>
+
+            <!-- Filtro Categoria -->
+            <div class="mb-4">
+                <label for="categorySelect" class="form-label fw-bold">Categoria</label>
+                <select class="form-select" id="categorySelect" name="category_id">
+                    <option value="">Tutte le categorie</option>
+                    {{-- Usiamo la variabile globale condivisa nell'AppServiceProvider --}}
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <!-- Bottone Submit -->
+            <button type="submit" class="btn btn-success w-100">Mostra Risultati</button>
+        </form>
+
+    </div>
+</div>

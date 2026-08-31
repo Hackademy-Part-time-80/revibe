@@ -1,4 +1,10 @@
 <x-layouts.app>
+    <div class="container mt-3">
+        <!-- Bottone in alto a sinistra, sotto la navbar -->
+        <button class="btn btn-outline-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchOffcanvas" aria-controls="searchOffcanvas">
+            Cerca / Filtra
+        </button>
+    </div>
     <div class="container-fluid text-center bg-body-tertiary">
         <div class="row py-5 mt-5 justify-content-center align-items-center">
             <div class="col-12">
