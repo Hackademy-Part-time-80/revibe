@@ -10,7 +10,6 @@
         <a href="{{ route('revisor.index') }}" class="btn btn-primary">Sei revisore?</a>
 
         <div class="row py-5 mt-5 justify-content-center align-items-center">
-            <div class="col-12">
                 <h1 class="display-3 fw-bold mb-3">ReVibe</h1>
                 <p class="lead text-muted">Dai nuova vita ai tuoi articoli preferiti</p>
                 <a href="{{ route('post.create') }}"
