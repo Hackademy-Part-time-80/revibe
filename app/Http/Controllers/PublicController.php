@@ -21,8 +21,9 @@ class PublicController extends Controller
     }
 
 
-    public function postView(Post $post)
+    public function postView()
     {
-        return view('posts.show', compact('post'));
+        $posts = Post::all();
+        return view('posts.show', compact('posts'));
     }
 }
