@@ -8,25 +8,20 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    
+
     public function categoryView(Category $category)
     {
         $postsByCategory = $category->posts()->where('isAccepted', true)->orderBy('created_at', 'desc')->paginate(12);
         return view('posts.category', compact('postsByCategory', 'category'));
     }
 
-        
-     public function search(Request $request)
+
+    public function search(Request $request)
     {
         $searched = $request->input('query');
-        
+
         // Inizializza la ricerca di base
         $query = Post::search($searched);
-
-        // Se l'utente ha selezionato una categoria, aggiungi il filtro
-        if ($request->filled('category_id')) {
-            $query->where('category_id', $request->input('category_id'));
-        }
 
         // Paginazione e ordine decrescente (Scout ordina per rilevanza di default)
         $posts = $query->orderBy('created_at', 'desc')->paginate(12);
