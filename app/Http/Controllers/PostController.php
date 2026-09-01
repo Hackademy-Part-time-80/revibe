@@ -19,6 +19,9 @@ class PostController extends Controller
     public function search(Request $request)
     {
         $searched = $request->input('query');
+        if (!$searched) {
+            return redirect()->back();
+        }
 
         // Inizializza la ricerca di base
         $query = Post::search($searched);
