@@ -24,7 +24,7 @@ class PostCreate extends Component
     protected $rules = [
         'title' => 'required|min:3|max:255',
         'price' => 'required|numeric|min:0.1',
-        'description' => 'required|min:10',
+        'description' => 'required|min:10|max:255',
         'category_id' => 'required|exists:categories,id'
     ];
 
@@ -36,6 +36,7 @@ class PostCreate extends Component
         'price.numeric' => 'Il prezzo deve essere un numero.',
         'price.min' => 'Il prezzo deve essere maggiore di zero.',
         'description.min' => 'La descrizione deve essere di almeno 10 caratteri.',
+        'description.max' => 'La descrizione non può superare i 255 caratteri.',
         'category_id.exists' => 'La categoria selezionata non è valida.'
     ];
 
