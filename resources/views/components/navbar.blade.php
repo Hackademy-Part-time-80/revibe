@@ -52,34 +52,36 @@
                 @endguest
 
                 {{-- Cosa vede l'utente loggato --}}
-                @auth
-                    @if (Auth::user()->isRevisor)
-                        <a href="{{ route('revisor.index') }}" class="btn btn-primary position-relative">
-                            Revisiona
-                            @if (Post::toBeRevisedCount() > 0 && Post::toBeRevisedCount() < 100)
-                                <span
-                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                    {{ Post::toBeRevisedCount() }}
-                                </span>
-                            @elseif (Post::toBeRevisedCount() >= 100)
-                                <span
-                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                    99+
-                                </span>
-                            @endif
-                        </a>
-                    @endif
+                <div class="d-flex align-items-center gap-3">
+                    @auth
+                        @if (Auth::user()->isRevisor)
+                            <a href="{{ route('revisor.index') }}" class="btn btn-primary position-relative">
+                                Revisiona
+                                @if (Post::toBeRevisedCount() > 0 && Post::toBeRevisedCount() < 100)
+                                    <span
+                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                        {{ Post::toBeRevisedCount() }}
+                                    </span>
+                                @elseif (Post::toBeRevisedCount() >= 100)
+                                    <span
+                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                        99+
+                                    </span>
+                                @endif
+                            </a>
+                        @endif
 
-                    <button class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center"
-                        type="button" style="width: 40px; height: 40px;" data-bs-toggle="offcanvas"
-                        data-bs-target="#searchOffcanvas" aria-controls="searchOffcanvas"
-                        aria-label="Cerca o filtra annunci" title="Cerca / Filtra">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
-                            viewBox="0 0 16 16">
-                            <path
-                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                        </svg>
-                    </button>
+                        <button class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center"
+                            type="button" style="width: 40px; height: 40px;" data-bs-toggle="offcanvas"
+                            data-bs-target="#searchOffcanvas" aria-controls="searchOffcanvas"
+                            aria-label="Cerca o filtra annunci" title="Cerca / Filtra">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                            </svg>
+                        </button>
+                    </div>
 
                     <div class="dropdown">
                         <button class="btn btn-light dropdown-toggle d-flex align-items-center rounded-pill px-3 border"
