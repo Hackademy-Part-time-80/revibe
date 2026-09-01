@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Scout\Searchable;
 
 class Post extends Model
@@ -24,7 +25,7 @@ class Post extends Model
 
     public static function toBeRevisedCount()
     {
-        return Post::where('isAccepted', null)->count();;
+        return Post::whereNull('isAccepted')->where('user_id', '!=', Auth::id())->count();;
     }
 
     public function setAccepted($value)

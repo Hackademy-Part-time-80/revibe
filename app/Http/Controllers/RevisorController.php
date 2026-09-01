@@ -12,7 +12,7 @@ class RevisorController extends Controller
 {
     public function index()
     {
-        $postToCheck = Post::where('isAccepted', null)->first();
+        $postToCheck = Post::whereNull('isAccepted')->where('user_id', '!=', Auth::id())->first();
         return view('revisor.index', compact('postToCheck'));
     }
 
