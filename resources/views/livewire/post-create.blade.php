@@ -1,19 +1,27 @@
 <form class="container bg-body-tertiary shadow rounded p-5 my-5" wire:submit="postStore">
     <h2 class="text-center fw-bold mb-4">Crea il tuo annuncio</h2>
 
-    <div class="mb-3">
-        <label for="title" class="form-label">Titolo</label>
-        <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" wire:model="title"
+    <div class="mb-3" x-data="{ count: 0 }" x-init="count = $refs.titleInput.value.length">
+        <div class="d-flex justify-content-between align-items-end">
+            <label for="title" class="form-label">Titolo</label>
+            <small class="text-muted"><span x-text="count"></span>/255 caratteri</small>
+        </div>
+        <input type="text" x-ref="titleInput" x-on:input="count = $event.target.value.length"
+            class="form-control @error('title') is-invalid @enderror" id="title" wire:model="title"
             placeholder="Es. Divano in pelle usato" required minlength="3" maxlength="255">
         @error('title')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>
 
-    <div class="mb-3">
-        <label for="description" class="form-label">Descrizione</label>
-        <textarea class="form-control @error('description') is-invalid @enderror" id="description" rows="6"
-            wire:model.blur="description" placeholder="Descrivi il tuo articolo..." required minlength="10"></textarea>
+    <div class="mb-3" x-data="{ count: 0 }" x-init="count = $refs.descInput.value.length">
+        <div class="d-flex justify-content-between align-items-end">
+            <label for="description" class="form-label">Descrizione</label>
+            <small class="text-muted"><span x-text="count"></span>/255 caratteri</small>
+        </div>
+        <textarea x-ref="descInput" x-on:input="count = $event.target.value.length"
+            class="form-control @error('description') is-invalid @enderror" id="description" rows="6"
+            wire:model.blur="description" placeholder="Descrivi il tuo articolo..." required minlength="10" maxlength="255"></textarea>
         @error('description')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
