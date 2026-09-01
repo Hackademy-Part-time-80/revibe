@@ -7,7 +7,7 @@
     @endif
 
     <div class="container-fluid text-center bg-body-tertiary">
-        <a href="{{ route('revisor.index') }}" class="btn btn-primary">Sei revisore?</a>
+
 
         <div class="row py-5 mt-5 justify-content-center align-items-center">
             <div class="col-12">

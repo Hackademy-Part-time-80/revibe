@@ -1,8 +1,10 @@
+@use('App\Models\Post')
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm sticky-top">
     <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="{{ route('homepage') }}">
-    <img src="{{ Vite::asset('resources/images/revibe-logo.svg') }}" alt="ReVibe" height="36">
-</a>
+            <img src="{{ Vite::asset('resources/images/revibe-logo.svg') }}" alt="ReVibe" height="36">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -50,23 +52,37 @@
 
                 {{-- Cosa vede l'utente loggato --}}
                 @auth
-                    <div class="dropdown">
-                        <button class="btn btn-light dropdown-toggle d-flex align-items-center rounded-pill px-3 border"
-                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-person-circle me-2 fs-5 text-primary"></i>
-                            <span class="fw-semibold">{{ Auth::user()->name }}</span>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
-                            <li>
-                                <!-- Il logout in Laravel deve essere fatto tramite un form (POST) per sicurezza -->
-                                <form action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item text-danger d-flex align-items-center">
-                                        <i class="bi bi-box-arrow-right me-2"></i> Esci
-                                    </button>
-                                </form>
-                            </li>
-                        </ul>
+                    <div class="row gap-2 align-items-center justify-content-center">
+                        @if (Auth::user()->isRevisor)
+                            <div class="col-5">
+                                <a href="{{ route('revisor.index') }}" class="btn btn-primary position-relative">Revise
+                                    @if (Post::toBeRevisedCount() > 0)
+                                        <span
+                                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            {{ Post::toBeRevisedCount() }}
+                                        </span>
+                                    @endif
+                                </a>
+                            </div>
+                        @endif
+                        <div class="dropdown col-5">
+                            <button class="btn btn-light dropdown-toggle d-flex align-items-center rounded-pill px-3 border"
+                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle me-2 fs-5 text-primary"></i>
+                                <span class="fw-semibold">{{ Auth::user()->name }}</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
+                                <li>
+                                    <!-- Il logout in Laravel deve essere fatto tramite un form (POST) per sicurezza -->
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item text-danger d-flex align-items-center">
+                                            <i class="bi bi-box-arrow-right me-2"></i> Esci
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 @endauth
             </div>
@@ -82,12 +98,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        
+
         <form action="{{ route('posts.search') }}" method="GET">
             <!-- Campo Testo -->
             <div class="mb-4">
                 <label for="searchInput" class="form-label fw-bold">Cosa stai cercando?</label>
-                <input type="search" class="form-control" id="searchInput" name="query" placeholder="Es. programmatore, divano..." value="{{ request('query') }}">
+                <input type="search" class="form-control" id="searchInput" name="query"
+                    placeholder="Es. programmatore, divano..." value="{{ request('query') }}">
             </div>
 
             <!-- Filtro Categoria -->
@@ -97,7 +114,8 @@
                     <option value="">Tutte le categorie</option>
                     {{-- Usiamo la variabile globale condivisa nell'AppServiceProvider --}}
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                        <option value="{{ $category->id }}"
+                            {{ request('category_id') == $category->id ? 'selected' : '' }}>
                             {{ $category->name }}
                         </option>
                     @endforeach

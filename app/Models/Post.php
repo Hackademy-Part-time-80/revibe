@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable; 
+use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
@@ -22,6 +22,11 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
+    public static function toBeRevisedCount()
+    {
+        return Post::where('isAccepted', null)->count();;
+    }
+
     public function setAccepted($value)
     {
         $this->isAccepted = $value;
@@ -29,7 +34,7 @@ class Post extends Model
         return true;
     }
 
-    
+
     public function toSearchableArray(): array
     {
         return [
@@ -37,7 +42,7 @@ class Post extends Model
             'title' => $this->title,
             'description' => $this->description,
             'category_id' => $this->category_id,
-            'category' => $this->category ? $this->category->name : null, 
+            'category' => $this->category ? $this->category->name : null,
             'isAccepted' => $this->isAccepted,
             'created_at' => $this->created_at,
         ];
