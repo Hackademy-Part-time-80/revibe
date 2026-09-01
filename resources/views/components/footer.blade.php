@@ -15,7 +15,7 @@
                     <a href="#" class="nav-link px-2 text-body-secondary">Annunci</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('become.revisor') }}" class="nav-link px-2 text-body-secondary">Diventa Revisore</a>
+                    <a href="{{ route('application.revisor') }}" class="nav-link px-2 text-body-secondary">Diventa Revisore</a>
                 </li>
             </ul>
         </footer>

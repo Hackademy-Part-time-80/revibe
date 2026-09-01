@@ -29,4 +29,6 @@ Route::get('/add-post', PostCreate::class)->name('post.create')->middleware('aut
 Route::get('/revisor/index', [RevisorController::class, 'index'])->middleware('isRevisor')->name('revisor.index');
 Route::patch('/revisor/accept/{post}', [RevisorController::class, 'acceptPost'])->middleware('isRevisor')->name('revisor.accept');
 Route::patch('/revisor/reject/{post}', [RevisorController::class, 'rejectPost'])->middleware('isRevisor')->name('revisor.reject');
-Route::get('/revisor/request', [RevisorController::class, 'becomeRevisor'])->middleware('auth')->name('become.revisor');
+Route::get('/revisor/application', [RevisorController::class, 'applicationRevisor'])->middleware('auth')->name('application.revisor');
+Route::post('/revisor/request', [RevisorController::class, 'becomeRevisor'])->middleware('auth')->name('become.revisor');
+Route::get('/make/revisor/{user}', [RevisorController::class, 'makeRevisor'])->name('make.revisor');

@@ -270,6 +270,6 @@ return [
         'asYouType' => false,
         'searchBoolean' => env('TNTSEARCH_BOOLEAN', false),
         'maxDocs' => env('TNTSEARCH_MAX_DOCS', 500)
-    ],
-
+    ],   
+    
 ];
