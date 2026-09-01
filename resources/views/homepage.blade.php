@@ -12,16 +12,6 @@
         <div class="row py-5 mt-5 justify-content-center align-items-center">
             <div class="col-12">
                 <!-- Contenitore flex per affiancare e centrare i bottoni -->
-                <div class="d-flex justify-content-center gap-3 mt-4">
-
-
-                    <!-- Il nuovo bottone per aprire l'Offcanvas -->
-                    <button class="btn btn-outline-primary btn-lg rounded-pill px-4 py-2 shadow-sm" type="button"
-                        data-bs-toggle="offcanvas" data-bs-target="#searchOffcanvas" aria-controls="searchOffcanvas">
-                        Cerca / Filtra
-                    </button>
-
-                </div>
                 <h1 class="display-3 fw-bold mb-3">ReVibe</h1>
                 <p class="lead text-muted">Dai nuova vita ai tuoi articoli preferiti</p>
                 <a href="{{ route('post.create') }}"
