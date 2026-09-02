@@ -16,7 +16,7 @@
                 Manda qui la tua candidatura!
                 <form action="{{ route('become.revisor') }}" method="POST">
                     @csrf
-                    <button type="submit" class="btn btn-outline-primary rounded-pill px-4">Diventa Revisore</button>     
+                    <button type="submit" class="btn btn-primary rounded-pill px-4">Diventa Revisore</button>     
                 </form>
             </div>
         </div>
