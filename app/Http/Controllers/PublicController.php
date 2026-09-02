@@ -19,4 +19,9 @@ class PublicController extends Controller
         $posts = Post::where('isAccepted', true)->orderBy('created_at', 'desc')->paginate(12);
         return view('posts.index', compact('posts'));
     }
+// passa alla pagina dettaglio
+    public function postView(Post $post)
+    {
+        return view('posts.show', compact('post'));
+    }
 }

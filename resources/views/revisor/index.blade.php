@@ -4,7 +4,10 @@
              <div class="col-lg-3 col-md-4 mb-4">
                  <div class="rounded shadow bg-body-secondary p-4 text-center">
                      <h1 class="h3 fw-bold mb-0">Revisore di ReVibe</h1>
-                     <p class="text-muted mb-0">Dashboard</p>
+                     <p class="text-muted mb-2">Dashboard</p>
+                     <span class="badge bg-primary text-white fs-6 shadow-sm px-3 py-2 rounded-pill">
+                         Da revisionare: <span class="fw-bold">{{ \App\Models\Post::toBeRevisedCount() }}</span>
+                     </span>
                  </div>
              </div>
 
@@ -16,14 +19,10 @@
                  @if ($postToCheck)
                      <div class="row g-4">
                          <div class="col-md-7">
-                             <div class="row g-3">
-                                 @for ($i = 0; $i < 6; $i++)
-                                     <div class="col-6 col-lg-4">
-                                         <img src="https://picsum.photos/300" class="img-fluid rounded shadow-sm"
-                                             alt="Immagine">
-                                     </div>
-                                 @endfor
-                             </div>
+                            <div class="text-center">
+                                <img src="https://picsum.photos/800/600?random={{ $postToCheck->id ?? rand(1, 1000) }}" class="img-fluid rounded shadow-sm"
+                                    alt="Immagine articolo">
+                            </div>
                          </div>
 
                          <div class="col-md-5">
