@@ -47,7 +47,7 @@
             <div class="d-flex align-items-center gap-2">
                 {{-- Cosa vedono gli ospiti (non loggati) --}}
                 @guest
-                    <a href="{{ route('login') }}" class="btn btn-outline-primary rounded-pill px-4">Accedi</a>
+                    <a href="{{ route('login') }}" class="btn btn-primary rounded-pill px-4">Accedi</a>
                     <a href="{{ route('register') }}" class="btn btn-primary rounded-pill px-4">Registrati</a>
                 @endguest
 

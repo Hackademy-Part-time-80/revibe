@@ -20,12 +20,14 @@ class RevisorController extends Controller
 
     public function acceptPost(Post $post)
     {
+        session(['last_reviewed_post_id' => $post->id]);
         $post->setAccepted(true);
         return redirect()->back()->with('message', 'Hai accettato l\'annuncio');
     }
 
     public function rejectPost(Post $post)
     {
+        session(['last_reviewed_post_id' => $post->id]);
         $post->setAccepted(false);
         return redirect()->back()->with('message', 'Hai rifiutato l\'annuncio');
     }
@@ -46,5 +48,21 @@ class RevisorController extends Controller
     {
         Artisan::call('app:make-user-revisor', ['email' => $user->email]);
         return redirect()->back();    
+    }
+
+    public function undo()
+    {
+        $postId = session('last_reviewed_post_id');
+        if (!$postId) {
+            return redirect()->route('revisor.index')->with('message', 'Nessuna revisione da annullare');
+        }
+
+        $post = Post::find($postId);
+        if ($post) {
+            $post->setAccepted(null);
+        }
+        session()->forget('last_reviewed_post_id');
+
+        return redirect()->route('revisor.index')->with('message', 'Hai annullato l\'ultima revisione');
     }
 }
