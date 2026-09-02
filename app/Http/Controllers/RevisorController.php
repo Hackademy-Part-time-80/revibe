@@ -40,21 +40,20 @@ class RevisorController extends Controller
 
     public function becomeRevisor()
     {
-        
+
         try {
             Mail::to('admin@revibe.it')->send(new BecomeRevisor(Auth::user()));
-            
-        return redirect()->route('homepage')->with('message', 'La tua richiesta è stata inviata');
+
+            return redirect()->route('homepage')->with('message', 'La tua richiesta è stata inviata');
         } catch (\Throwable $th) {
             dd($th->getMessage());
         }
-        
     }
 
     public function makeRevisor(User $user)
     {
         Artisan::call('app:make-user-revisor', ['email' => $user->email]);
-        return redirect()->back();    
+        return redirect()->back();
     }
 
     public function undo()
