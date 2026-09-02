@@ -32,3 +32,5 @@ Route::patch('/revisor/reject/{post}', [RevisorController::class, 'rejectPost'])
 Route::get('/revisor/application', [RevisorController::class, 'applicationRevisor'])->middleware('auth')->name('application.revisor');
 Route::post('/revisor/request', [RevisorController::class, 'becomeRevisor'])->middleware('auth')->name('become.revisor');
 Route::get('/make/revisor/{user}', [RevisorController::class, 'makeRevisor'])->name('make.revisor');
+// undo revisione extra
+Route::patch('/revisor/undo', [RevisorController::class, 'undo'])->middleware('isRevisor')->name('revisor.undo');

@@ -16,6 +16,17 @@
                      <div class="alert alert-success">{{ session('message') }}</div>
                  @endif
 
+                 @if (session()->has('last_reviewed_post_id'))
+                        <div class="text-muted mb-3">
+                            <form action="{{ route('revisor.undo') }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('PATCH')
+                                
+                                <button type="submit" class="btn btn-secondary btn-sm">↩️ Annulla ultima operazione</button>
+                            </form>
+                        </div>
+                    @endif
+
                  @if ($postToCheck)
                      <div class="row g-4">
                          <div class="col-md-7">
