@@ -15,9 +15,9 @@ class BecomeRevisor extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    
 
-    public function __construct(User $user)
+    public function __construct(public User $user)
     {
         $this->user = $user;
     }
@@ -26,7 +26,7 @@ class BecomeRevisor extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: "Rendi reviore l' utente" . $this->user->name,
+            subject: "Rendi revisore l' utente" . $this->user->name,
         );
     }
 

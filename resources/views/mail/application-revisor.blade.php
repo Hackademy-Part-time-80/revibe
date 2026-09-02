@@ -1,4 +1,4 @@
-<x-layout>
+<x-layouts.app>
    
     <div class="container"> 
 
@@ -7,17 +7,21 @@
                 <h1 class="display-3 fw-bold">
                     Vuoi diventare Revisore?
                 </h1>
-        <div class="col-12 text-center py-5">
-            Entra a far parte del Team ReVibe e guadagna revisionando gli annunci degli utenti!
-        </div>
-         <form action="become.revisor" method="POST">
-        @csrf
-        <div class="col-12 text-center py-5">
-            Manda qui la tua candidatura!
-            <a href="{{ route('become.revisor') }}" class="btn btn-outline-primary rounded-pill px-4">Diventa Revisore</a>     
+            </div>
+            <div class="col-12 text-center py-5">
+                Entra a far parte del Team ReVibe e guadagna revisionando gli annunci degli utenti!
+            </div>
+         
+            <div class="col-12 text-center py-5">
+                Manda qui la tua candidatura!
+                <form action="{{ route('become.revisor') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-outline-primary rounded-pill px-4">Diventa Revisore</button>     
+                </form>
+            </div>
         </div>
                 
     </div>
-    </form>
 
-</x-layout.app>
+
+</x-layouts.app>
