@@ -12,7 +12,7 @@
         </div>
     @endif
 
-    <div class="container-fluid text-center bg-body-tertiary">
+    <div class="container-fluid text-center">
 
 
         <div class="row py-5 mt-5 justify-content-center align-items-center">

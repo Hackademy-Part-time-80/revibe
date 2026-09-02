@@ -37,6 +37,8 @@
     --bs-link-hover-color: #084330;
     --bs-link-hover-color-rgb: 8, 67, 48;
 
+    --bs-tertiary-bg: #c9e4d3;
+    --bs-tertiary-bg-rgb: 201, 228, 211;
 
 }
 
@@ -52,6 +54,18 @@
     --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
 }
 
+.navbar.bg-body-tertiary {
+    --bs-navbar-color: #17151a;
+
+    --bs-navbar-hover-color: #0f7a57;
+
+    --bs-navbar-active-color: #0f7a57;
+
+    --bs-navbar-brand-color: #17151a;
+
+    --bs-navbar-brand-hover-color: #0f7a57;
+    --bs-navbar-toggler-border-color: rgba(23, 21, 26, 0.2);
+}
 
 
 .btn-cta {

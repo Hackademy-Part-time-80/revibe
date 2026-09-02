@@ -16,13 +16,16 @@
             <!-- Link centrali -->
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('homepage') }}">Home</a>
+                    <a class="nav-link {{ request()->routeIs('homepage') ? 'active' : '' }}" aria-current="page"
+                        href="{{ route('homepage') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('index') }}">Annunci</a>
+                    <a class="nav-link {{ request()->routeIs('index') ? 'active' : '' }}"
+                        href="{{ route('index') }}">Annunci</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('post.create') }}">Crea Annuncio</a>
+                    <a class="nav-link {{ request()->routeIs('post.create') ? 'active' : '' }}"
+                        href="{{ route('post.create') }}">Crea Annuncio</a>
                 </li>
 
                 {{-- Dropdown categorie --}}
@@ -34,7 +37,7 @@
                     <ul class="dropdown-menu">
                         @foreach ($categories as $category)
                             <li>
-                                <a class="dropdown-item" href="{{ route('categoryView', ['category' => $category]) }}">
+                                <a class="dropdown-item " href="{{ route('categoryView', ['category' => $category]) }}">
                                     {{ $category->name }}
                                 </a>
                             </li>
