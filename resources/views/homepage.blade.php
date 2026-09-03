@@ -12,19 +12,28 @@
         </div>
     @endif
 
-    <div class="container-fluid text-center">
 
+    {{-- hero section --}}
 
-        <div class="row py-5 mt-5 justify-content-center align-items-center">
-            <div class="col-12">
+    <div class="container text-center text-lg-start">
+        <div class="row py-3 my-3 py-lg-5 my-lg-5 justify-content-center align-items-center">
+            <div class="col-12 col-lg-6 jumbotron">
                 <!-- Contenitore flex per affiancare e centrare i bottoni -->
                 <h1 class="display-3 fw-bold mb-3">ReVibe</h1>
                 <p class="lead text-muted">Dai nuova vita ai tuoi articoli preferiti</p>
                 <a href="{{ route('post.create') }}"
-                    class="btn btn-primary btn-lg rounded-pill px-4 py-2 shadow-sm btn-cta">Crea un nuovo articolo</a>
+                    class="btn btn-primary btn-lg rounded-pill px-4 py-2 shadow-sm btn-cta">Crea annuncio</a>
+            </div>
+            <div class="col-12 col-lg-6 jumbotron">
+                <!-- contenito immagine -->
+                <picture>
+                    <img src="" alt="Immagine di revibe">
+                </picture>
+
             </div>
         </div>
     </div>
+
 
     <div class="container py-5">
         <div class="row justify-content-start g-4">

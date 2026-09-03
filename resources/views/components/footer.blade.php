@@ -1,4 +1,4 @@
-<div class="bg-light mt-auto border-top">
+<div class="bg-light bg-body-tertiary mt-auto border-top">
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-4 my-2">
             <p class="col-md-4 mb-0 text-body-secondary">© 2026 ReVibe srl</p>
