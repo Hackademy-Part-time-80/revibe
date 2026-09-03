@@ -26,7 +26,6 @@
                                  operazione</button>
                          </form>
                      </div>
-                     @php session()->forget('last_reviewed_post_id'); @endphp
                  @endif
 
                  @if ($postToCheck)
