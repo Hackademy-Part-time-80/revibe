@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             undoBox.classList.add('d-none');
 
-        }, 2000);
+        }, 30000);
 
     }
 });
