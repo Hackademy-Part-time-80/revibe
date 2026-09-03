@@ -33,7 +33,7 @@
                          <div class="col-md-7">
                              <div class="text-center">
                                  <img src="https://picsum.photos/800/600?random={{ $postToCheck->id ?? rand(1, 1000) }}"
-                                     class="img-fluid rounded shadow-sm" alt="Immagine articolo">
+                                     class="img-fluid rounded shadow-sm md-auto" alt="Immagine articolo">
                              </div>
                          </div>
 
