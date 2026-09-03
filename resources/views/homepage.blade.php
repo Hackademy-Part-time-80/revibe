@@ -20,17 +20,17 @@
             <div class="row py-3 py-lg-5 justify-content-center align-items-center">
                 <div class="col-12 col-lg-6 jumbotron py-4">
                     <!-- Contenitore flex per affiancare e centrare i bottoni -->
-                    <h1 class="display-3 fw-bold mb-3 text-dark">ReVibe</h1>
+                    <h1 class="display-3 fw-bold mb-3 text-dark">Re<span class="text-primary">Vibe</span></h1>
                     <p class="lead text-dark">Dai nuova vita ai tuoi articoli preferiti</p>
                     <a href="{{ route('post.create') }}"
                         class="btn btn-dark btn-lg rounded-pill px-4 py-2 shadow-sm btn-cta">Crea annuncio</a>
                 </div>
                 <div class="col-12 col-lg-6 jumbotron py-4">
                     <picture>
-                        <img src="https://images.unsplash.com/photo-1555529771-835f59fc5efe?auto=format&fit=crop&w=1000&q=80" 
-                             class="img-fluid rounded shadow-lg" 
-                             style="max-height: 400px; width: 100%; object-fit: cover; object-position: center;" 
-                             alt="Negozio e-commerce ReVibe">
+                        <img src="https://images.unsplash.com/photo-1555529771-835f59fc5efe?auto=format&fit=crop&w=1000&q=80"
+                            class="img-fluid rounded shadow-lg"
+                            style="max-height: 400px; width: 100%; object-fit: cover; object-position: center;"
+                            alt="Negozio e-commerce ReVibe">
                     </picture>
                 </div>
             </div>
