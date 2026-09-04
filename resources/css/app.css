@@ -79,6 +79,17 @@
 
 .card {
     transition: all 0.3s ease;
+    background: #E9EFE6;              /* verde salvia molto chiaro */
+  border: 1.5px solid #0f7a57;      /* il tuo verde primario, resta ben visibile sopra */
+  border-radius: 12px;
+   
+}
+
+
+.card-inner {
+  border: 1px solid rgba(23,21,26,0.15);
+  border-radius: 8px;
+  padding: 1rem;
 }
 
 .card:hover {

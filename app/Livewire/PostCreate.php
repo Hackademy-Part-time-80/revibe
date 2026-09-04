@@ -17,6 +17,8 @@ class PostCreate extends Component
     public $description = '';
     public int $user_id;
     public $category_id = '';
+    public $images = [];
+    public $temporary_images;
 
 
 
@@ -64,5 +66,18 @@ class PostCreate extends Component
     {
         $categories = Category::all();
         return view('livewire.post-create', compact('categories'));
+    }
+
+    //funzione per la validazione delle immagini
+    public function updatedTemporaryImages()
+    {
+        if ($this->validate([
+            'temporary_images.*' => 'image|max:1024',
+
+        ])) {
+            foreach ($this->temporary_images as $image) {
+                $this->images[] = $image;
+            }
+        }
     }
 }

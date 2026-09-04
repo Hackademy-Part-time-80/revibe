@@ -25,7 +25,7 @@
             </span>
         </div>
 
-        <p class="card-text text-muted mb-4 flex-grow-1" style="font-size: 0.95rem;">
+        <p class="card-text mb-4 flex-grow-1" style="font-size: 0.95rem;">
             {{ Str::limit($post->description, 100) }}
         </p>
 
