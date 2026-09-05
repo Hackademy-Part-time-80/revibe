@@ -3,8 +3,9 @@
         <div class="auth-card-wrapper">
 
             <div class="text-center mb-4">
-                <div class="auth-icon-circle mb-3">
-                    <img src="{{ Vite::asset('resources/images/revibe-logo.svg') }}" alt="Logo" class="auth-logo">
+                <!-- Logo ReVibe -->
+                <div class="col-12 jumbotron py-4 animate-fade-left">
+                    <h1 class="d-flex flex-row justify-content-center align-content-center fw-bold mb-3 text-dark">Re<span class="text-primary">Vibe</span></h1>
                 </div>
                 <h1 class="h3 fw-bold mb-1">Che piacere rivederti!</h1>
                 <p class="text-muted">Accedi al tuo account per continuare</p>
