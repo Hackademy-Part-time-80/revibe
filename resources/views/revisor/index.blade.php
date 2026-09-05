@@ -32,8 +32,30 @@
                      <div class="row g-4">
                          <div class="col-md-7">
                              <div class="text-center">
-                                 <img src="https://picsum.photos/800/600?random={{ $postToCheck->id ?? rand(1, 1000) }}"
-                                     class="img-fluid rounded shadow-sm md-auto" alt="Immagine articolo">
+                                @if ($postToCheck->images->count() > 1)
+                                    <div id="carouselExampleRevisor" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner shadow-sm rounded">
+                                            @foreach ($postToCheck->images as $image)
+                                                <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                                                    <img src="{{ Storage::url($image->path) }}" class="d-block w-100 img-fluid rounded" alt="Immagine articolo">
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRevisor" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRevisor" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                @elseif ($postToCheck->images->count() == 1)
+                                    <img src="{{ Storage::url($postToCheck->images->first()->path) }}" class="img-fluid rounded shadow-sm md-auto mb-2" alt="Immagine articolo">
+                                 @else
+                                     <img src="https://picsum.photos/800/600?random={{ $postToCheck->id ?? rand(1, 1000) }}"
+                                         class="img-fluid rounded shadow-sm md-auto" alt="Immagine articolo">
+                                 @endif
                              </div>
                          </div>
 

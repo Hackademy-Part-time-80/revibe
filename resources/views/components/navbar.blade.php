@@ -3,8 +3,13 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm sticky-top">
     <div class="container-fluid">
 
-        <a class="navbar-brand d-flex align-items-center" href="{{ route('homepage') }}">
-            <img src="{{ Vite::asset('resources/images/revibe-logo.svg') }}" alt="ReVibe" height="36">
+        <a class="navbar-brand d-flex align-items-center flex-column justify-content-center" href="{{ route('homepage') }}" style="gap:2px; text-decoration:none;">
+            <div style="display:flex;align-items:baseline;font-size:24px;line-height:0.86;font-weight:800;letter-spacing:-0.05em;font-family:'Manrope',Helvetica,Arial,sans-serif;padding-top:4px;">
+                <span style="color:#000000">Re</span><span style="color:#0f7a57">Vibe</span>
+            </div>
+            <svg viewBox="-6 -14 252 44" style="width:65px;height:auto;display:block;overflow:visible;" aria-hidden="true">
+                <path d="M2 8 C 22 -2, 42 18, 62 8 S 102 -2, 122 8 S 162 18, 182 8 S 222 -2, 238 8" fill="none" stroke="#0f7a57" stroke-width="12" stroke-linecap="round"></path>
+            </svg>
         </a>
 
 

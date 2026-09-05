@@ -54,11 +54,10 @@
     </div>
 
     <!-- Inserimento delle immagini -->
-    <!-- Inserimento delle immagini -->
     <div class="mb-3">
         <label for="temporary_images" class="form-label">Immagini</label>
-        <input type="file" id="temporary_images" wire:model="temporary_images" multiple
-            class="form-control shadow @error('temporary_images.*') is-invalid @enderror">
+        <input type="file" id="temporary_images" wire:model.live="temporary_images" multiple
+            class="form-control shadow @error('temporary_images.*') is-invalid @enderror @error('temporary_images') is-invalid @enderror">
         @error('temporary_images.*')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -68,16 +67,16 @@
     </div>
 
     @if (!empty($images))
-        <div class="row">
+        <div class="row mb-3">
             <div class="col-12">
-                <p class="fw-bold">Immagini caricate:</p>
-                <div class="row border border-4 border-success rounded shadow py-4">
+                <p class="fw-bold">Anteprima fotografica:</p>
+                <div class="row border border-4 border-info rounded shadow py-4">
                     @foreach ($images as $key => $image)
                         <div class="col d-flex flex-column align-items-center my-3">
                             <div class="img-preview mx-auto shadow rounded"
-                                style="background-image: url({{ $image->temporaryUrl() }});"></div>
-                            <button type="button" class="btn mt-1 btn-danger"
-                                wire:click="removeImage({{ $key }})">X</button>
+                                style="background-image: url('{{ $image->temporaryUrl() }}'); width: 120px; height: 120px; background-size: cover; background-position: center;"></div>
+                            <button type="button" class="btn mt-2 btn-danger shadow d-block text-center mx-auto"
+                                wire:click="removeImage({{ $key }})">Cancella</button>
                         </div>
                     @endforeach
                 </div>

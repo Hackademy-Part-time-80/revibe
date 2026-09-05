@@ -13,24 +13,28 @@ class PostCreate extends Component
     use WithFileUploads;
 
     public $title = '';
+
     public $price = '';
+
     public $description = '';
+
     public int $user_id;
+
     public $category_id = '';
+
     public $images = [];
+
     public $temporary_images;
-
-
 
     // MODIFICATORE VALUE DEI REQUIRED//
     protected $rules = [
         'title' => 'required|min:3|max:255',
         'price' => 'required|numeric|min:0.1',
         'description' => 'required|min:10|max:255',
-        'category_id' => 'required|exists:categories,id'
+        'category_id' => 'required|exists:categories,id',
     ];
 
-     // MESSAGGI ERROR DEI REQUIRED//
+    // MESSAGGI ERROR DEI REQUIRED//
     protected $messages = [
         '*.required' => 'Il campo :attribute è obbligatorio.',
         'title.min' => 'Il titolo deve avere almeno 3 caratteri.',
@@ -39,19 +43,15 @@ class PostCreate extends Component
         'price.min' => 'Il prezzo deve essere maggiore di zero.',
         'description.min' => 'La descrizione deve essere di almeno 10 caratteri.',
         'description.max' => 'La descrizione non può superare i 255 caratteri.',
-        'category_id.exists' => 'La categoria selezionata non è valida.'
+        'category_id.exists' => 'La categoria selezionata non è valida.',
     ];
 
     public function postStore()
     {
-
-
-
         $this->validate();
         $this->user_id = Auth::user()->id;
 
-
-        Post::create([
+        $post = Post::create([
             'title' => $this->title,
             'price' => $this->price,
             'description' => $this->description,
@@ -59,22 +59,40 @@ class PostCreate extends Component
             'category_id' => $this->category_id,
         ]);
 
+        if (count($this->images)) {
+            foreach ($this->images as $image) {
+                $post->images()->create(['path' => $image->store('images', 'public')]);
+            }
+        }
+
+        $this->cleanForm();
+
         return redirect()->route('homepage')->with('successMessage', 'Annuncio creato!');
+    }
+
+    public function cleanForm()
+    {
+        $this->title = '';
+        $this->price = '';
+        $this->description = '';
+        $this->category_id = '';
+        $this->images = [];
+        $this->temporary_images = [];
     }
 
     public function render()
     {
         $categories = Category::all();
+
         return view('livewire.post-create', compact('categories'));
     }
 
-    //funzione per la validazione delle immagini
+    // funzione per la validazione delle immagini
     public function updatedTemporaryImages()
     {
         if ($this->validate([
             'temporary_images.*' => 'image|max:1024',
-            'temporary_images' => 'max:6' 
-
+            'temporary_images' => 'max:6',
         ])) {
             foreach ($this->temporary_images as $image) {
                 $this->images[] = $image;
