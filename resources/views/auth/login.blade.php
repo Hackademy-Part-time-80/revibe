@@ -1,33 +1,56 @@
 <x-layouts.app>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-12 text-center">
-                <h1 class="display-4 pt-5">Accedi</h1>
+    <div class="auth-page">
+        <div class="auth-card-wrapper">
+
+            <div class="text-center mb-4">
+                <div class="auth-icon-circle mb-3">
+                    <img src="{{ Vite::asset('resources/images/revibe-logo.svg') }}" alt="Logo" class="auth-logo">
+                </div>
+                <h1 class="h3 fw-bold mb-1">Che piacere rivederti!</h1>
+                <p class="text-muted">Accedi al tuo account per continuare</p>
             </div>
-        </div>
-        <div class="row justify-content-center align-items-center height-custom">
-            <div class="col-12 col-md-6">
-                <form method="POST" action="{{ route('login') }}" class="bg-body-secondary-subtle shadow rounded p-5">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="loginEmail" class="form-label">Indirizzo email</label>
-                        <input type="email" class="form-control" id="loginEmail" name="email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password:</label>
-                        <input type="password" class="form-control" id="password" name="password">
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary">Accedi</button>
-                    </div>
-                    <div class="text-center mt-3">
-                        <small>
-                            Non sei registato?
-                            <a href="{{ route('register') }}">Clicca Qui!</a>
-                        </small>
-                    </div>
-                </form>
+
+            <div class="card auth-card">
+                <div class="card-body p-4 p-md-5">
+
+                    @error('email')
+                        <div class="alert alert-danger py-2 small rounded-3">{{ $message }}</div>
+                    @enderror
+
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control rounded-3" id="loginEmail" name="email"
+                                   placeholder="nome@esempio.com" value="{{ old('email') }}">
+                            <label for="loginEmail">Indirizzo email</label>
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <input type="password" class="form-control rounded-3" id="password" name="password"
+                                   placeholder="Password">
+                            <label for="password">Password</label>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input bg-success" type="checkbox" id="remember" name="remember"
+                                       {{ old('remember') ? 'checked' : '' }}>
+                                <label class="form-check-label small" for="remember">Ricordami</label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg w-100 rounded-3 fw-semibold">
+                            Accedi
+                        </button>
+                    </form>
+                </div>
             </div>
+
+            <p class="text-center text-muted mt-4 mb-0">
+                Non sei registrato?
+                <a href="{{ route('register') }}" class="fw-semibold text-decoration-none">Registrati ora</a>
+            </p>
         </div>
     </div>
 </x-layouts.app>

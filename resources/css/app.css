@@ -80,7 +80,7 @@
 .card {
     transition: all 0.3s ease;
     background: #E9EFE6;              /* verde salvia molto chiaro */
-  border: 1.5px solid #0f7a57;      /* il tuo verde primario, resta ben visibile sopra */
+  border: 1.5px solid #022b1e;      /* il tuo verde primario, resta ben visibile sopra */
   border-radius: 12px;
    
 }
@@ -103,4 +103,70 @@
 
 .card:hover .card-img-top {
     transform: scale(1.05);
+}
+
+
+/* Sfondo pagine di autenticazione (login, registrazione, ecc.) */
+.auth-page {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #f7f6f0;
+}
+
+.auth-page::before,
+.auth-page::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+}
+
+.auth-page::before {
+    width: 420px;
+    height: 420px;
+    background: #0f7a57;
+    opacity: 0.25;
+    top: -120px;
+    left: -100px;
+}
+
+.auth-page::after {
+    width: 500px;
+    height: 500px;
+    background: #4f6a5e;
+    opacity: 0.2;
+    bottom: -160px;
+    right: -140px;
+}
+
+.auth-card-wrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+    padding: 0 1rem;
+}
+
+.auth-logo {
+    max-width: 140px;
+    height: auto;
+}
+
+.auth-card {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 1rem 3rem rgba(23, 21, 26, 0.12);
+}
+/* la visualizzazione dell'immagine di anteprima è gestita tramite background-image, quindi non è necessario un tag <img> */
+.img-preview{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 120px;
+    width: 120px;
 }

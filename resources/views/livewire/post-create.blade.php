@@ -53,6 +53,38 @@
         </div>
     </div>
 
+    <!-- Inserimento delle immagini -->
+    <!-- Inserimento delle immagini -->
+    <div class="mb-3">
+        <label for="temporary_images" class="form-label">Immagini</label>
+        <input type="file" id="temporary_images" wire:model="temporary_images" multiple
+            class="form-control shadow @error('temporary_images.*') is-invalid @enderror">
+        @error('temporary_images.*')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+        @error('temporary_images')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
+
+    @if (!empty($images))
+        <div class="row">
+            <div class="col-12">
+                <p class="fw-bold">Immagini caricate:</p>
+                <div class="row border border-4 border-success rounded shadow py-4">
+                    @foreach ($images as $key => $image)
+                        <div class="col d-flex flex-column align-items-center my-3">
+                            <div class="img-preview mx-auto shadow rounded"
+                                style="background-image: url({{ $image->temporaryUrl() }});"></div>
+                            <button type="button" class="btn mt-1 btn-danger"
+                                wire:click="removeImage({{ $key }})">X</button>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    @endif
+
     <div class="d-flex justify-content-center mt-4">
         <button type="submit" class="btn btn-primary btn-lg px-5 rounded-pill">Crea</button>
     </div>

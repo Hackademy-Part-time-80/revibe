@@ -73,11 +73,20 @@ class PostCreate extends Component
     {
         if ($this->validate([
             'temporary_images.*' => 'image|max:1024',
+            'temporary_images' => 'max:6' 
 
         ])) {
             foreach ($this->temporary_images as $image) {
                 $this->images[] = $image;
             }
+        }
+    }
+
+    //funzione per rimuovere le immagini selezionate
+    public function removeImage($key)
+    {
+        if (in_array($key, array_keys($this->images))) {
+            unset($this->images[$key]);
         }
     }
 }
