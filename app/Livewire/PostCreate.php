@@ -59,9 +59,9 @@ class PostCreate extends Component
             'category_id' => $this->category_id,
         ]);
 
-        if (count($this->images)) {
+        if (count($this->images) > 0) {
             foreach ($this->images as $image) {
-                $post->images()->create(['path' => $image->store('images', 'public')]);
+                $this->post->images()->create(['path' => $image->store('images', 'public')]);
             }
         }
 

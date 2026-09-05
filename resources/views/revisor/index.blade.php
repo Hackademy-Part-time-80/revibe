@@ -1,5 +1,5 @@
  <x-layouts.app>
-     <div class="container-fluid pt-5">
+     <div class="container-fluid">
          <div class="row">
              <div class="col-lg-3 col-md-4 mb-4">
                  <div class="rounded shadow bg-body-secondary p-4 text-center">

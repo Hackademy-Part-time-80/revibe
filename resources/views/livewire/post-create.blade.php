@@ -70,13 +70,18 @@
         <div class="row mb-3">
             <div class="col-12">
                 <p class="fw-bold">Anteprima fotografica:</p>
-                <div class="row border border-4 border-info rounded shadow py-4">
+                <div class="row border border-4 border-success rounded shadow py-4">
                     @foreach ($images as $key => $image)
                         <div class="col d-flex flex-column align-items-center my-3">
                             <div class="img-preview mx-auto shadow rounded"
-                                style="background-image: url('{{ $image->temporaryUrl() }}'); width: 120px; height: 120px; background-size: cover; background-position: center;"></div>
-                            <button type="button" class="btn mt-2 btn-danger shadow d-block text-center mx-auto"
-                                wire:click="removeImage({{ $key }})">Cancella</button>
+                                style="background-image: url('{{ $image->temporaryUrl() }}'); width: 120px; height: 120px; background-size: cover; background-position: center;">
+                            </div>
+                            <button type="button"
+                                class="btn btn-danger shadow d-flex align-items-center justify-content-center mt-2 mx-auto rounded-circle"
+                                style="width: 36px; height: 36px;" wire:click="removeImage({{ $key }})"
+                                aria-label="Rimuovi immagine" title="Rimuovi immagine">
+                                <i class="bi bi-trash"></i>
+                            </button>
                         </div>
                     @endforeach
                 </div>
