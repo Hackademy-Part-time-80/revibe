@@ -45,7 +45,7 @@
                 class="form-select @error('category_id') is-invalid @enderror" required>
                 <option value="" selected disabled>{{ __('ui.selezioneCategoria') }}</option>
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    <option value="{{ $category->id }}">{{ __("ui.$category->name") }}</option>
                 @endforeach
             </select>
             @error('category_id')

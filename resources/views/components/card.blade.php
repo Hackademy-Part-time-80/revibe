@@ -33,7 +33,7 @@
             <span
                 class="bg-primary text-white px-3 py-1 m-3 rounded-pill small fw-bold shadow-sm d-inline-block hover-opacity"
                 style="opacity: 0.8;">
-                {{ $post->category->name ?? 'Categoria' }}
+                {{ __('ui.' . ($post->category->name ?? 'Categoria')) }}
             </span>
         </a>
     </div>
