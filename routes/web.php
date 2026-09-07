@@ -1,19 +1,18 @@
 <?php
 
-use App\Http\Controllers\PublicController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\RevisorController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PublicController;
+use App\Http\Controllers\RevisorController;
 use App\Livewire\PostCreate;
-use Illuminate\Routing\Route as RoutingRoute;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 //route lingua
 Route::post('/lingua/{lang}', [PublicController::class, 'setLanguage'])->name('setLocale');
 
 // Route Home
-Route::get('/', [PublicController::class, 'home'])->name('homepage');
+Route::get('/', [PublicController::class, 'welcome'])->name('welcome');
+Route::get('/home', [PublicController::class, 'home'])->name('homepage');
 
 // Autenticazione
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

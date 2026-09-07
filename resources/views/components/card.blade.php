@@ -3,10 +3,30 @@
 <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
     <!-- Sezione Immagine con Badge sovrapposto -->
     <div class="position-relative">
-        <img src="https://picsum.photos/500/350?random={{ $post->id ?? rand(1, 1000) }}" class="card-img-top"
-            alt="Immagine articolo" style="height: 250px; object-fit: cover;">
+        @if ($post->images->count() > 1)
+            <div id="carouselCard{{ $post->id }}" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    @foreach ($post->images as $image)
+                        <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                            <img src="{{ Storage::url($image->path) }}" class="card-img-top" alt="Immagine articolo" style="height: 250px; object-fit: cover;">
+                        </div>
+                    @endforeach
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselCard{{ $post->id }}" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselCard{{ $post->id }}" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        @else
+            <img src="{{ $post->images->isNotEmpty() ? Storage::url($post->images->first()->path) : 'https://picsum.photos/500/350?random=' . ($post->id ?? rand(1, 1000)) }}" class="card-img-top"
+                alt="Immagine articolo" style="height: 250px; object-fit: cover;">
+        @endif
         <a href="{{ route('categoryView', $post->category) }}"
-            class="position-absolute top-0 start-0 text-decoration-none">
+            class="position-absolute top-0 start-0 text-decoration-none" style="z-index: 10;">
             <span
                 class="bg-primary text-white px-3 py-1 m-3 rounded-pill small fw-bold shadow-sm d-inline-block hover-opacity"
                 style="opacity: 0.8;">
