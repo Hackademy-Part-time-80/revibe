@@ -3,12 +3,16 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm sticky-top">
     <div class="container-fluid">
 
-        <a class="navbar-brand d-flex align-items-center flex-column justify-content-center" href="{{ route('homepage') }}" style="gap:2px; text-decoration:none;">
-            <div style="display:flex;align-items:baseline;font-size:24px;line-height:0.86;font-weight:800;letter-spacing:-0.05em;font-family:'Manrope',Helvetica,Arial,sans-serif;padding-top:4px;">
+        <a class="navbar-brand d-flex align-items-center flex-column justify-content-center"
+            href="{{ route('homepage') }}" style="gap:2px; text-decoration:none;">
+            <div
+                style="display:flex;align-items:baseline;font-size:24px;line-height:0.86;font-weight:800;letter-spacing:-0.05em;font-family:'Manrope',Helvetica,Arial,sans-serif;padding-top:4px;">
                 <span style="color:#000000">Re</span><span style="color:#0f7a57">Vibe</span>
             </div>
-            <svg viewBox="-6 -14 252 44" style="width:65px;height:auto;display:block;overflow:visible;" aria-hidden="true">
-                <path d="M2 8 C 22 -2, 42 18, 62 8 S 102 -2, 122 8 S 162 18, 182 8 S 222 -2, 238 8" fill="none" stroke="#0f7a57" stroke-width="12" stroke-linecap="round"></path>
+            <svg viewBox="-6 -14 252 44" style="width:65px;height:auto;display:block;overflow:visible;"
+                aria-hidden="true">
+                <path d="M2 8 C 22 -2, 42 18, 62 8 S 102 -2, 122 8 S 162 18, 182 8 S 222 -2, 238 8" fill="none"
+                    stroke="#0f7a57" stroke-width="12" stroke-linecap="round"></path>
             </svg>
         </a>
 
@@ -24,28 +28,29 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('homepage') ? 'active' : '' }}" aria-current="page"
-                        href="{{ route('homepage') }}">Home</a>
+                        href="{{ route('homepage') }}">{{ __('ui.home') }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('index') ? 'active' : '' }}"
-                        href="{{ route('index') }}">Annunci</a>
+                        href="{{ route('index') }}">{{ __('ui.annunci') }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('post.create') ? 'active' : '' }}"
-                        href="{{ route('post.create') }}">Crea Annuncio</a>
+                        href="{{ route('post.create') }}">{{ __('ui.crea_annuncio') }}</a>
                 </li>
 
                 {{-- Dropdown categorie --}}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        Categorie Prodotti
+                        {{ __('ui.categorie_prodotti') }}
                     </a>
                     <ul class="dropdown-menu">
                         @foreach ($categories as $category)
                             <li>
-                                <a class="dropdown-item " href="{{ route('categoryView', ['category' => $category]) }}">
-                                    {{ $category->name }}
+                                <a class="dropdown-item "
+                                    href="{{ route('categoryView', ['category' => $category]) }}">
+                                    {{ __("ui.$category->name") }}
                                 </a>
                             </li>
                         @endforeach
@@ -58,8 +63,8 @@
             <div class="d-flex align-items-center gap-2">
                 {{-- Cosa vedono gli ospiti (non loggati) --}}
                 @guest
-                    <a href="{{ route('login') }}" class="btn btn-primary rounded-pill px-4">Accedi</a>
-                    <a href="{{ route('register') }}" class="btn btn-primary rounded-pill px-4">Registrati</a>
+                    <a href="{{ route('login') }}" class="btn btn-primary rounded-pill px-4">{{ __('ui.accedi') }}</a>
+                    <a href="{{ route('register') }}" class="btn btn-primary rounded-pill px-4">{{ __('ui.registrati') }}</a>
                 @endguest
 
                 {{-- Cosa vede l'utente loggato --}}

@@ -40,9 +40,9 @@
                 <div class="col-12 col-lg-6 jumbotron py-4 animate-fade-left">
                     <!-- Contenitore flex per affiancare e centrare i bottoni -->
                     <h1 class="display-3 fw-bold mb-3 text-dark">Re<span class="text-primary">Vibe</span></h1>
-                    <p class="lead text-dark">Dai nuova vita ai tuoi articoli preferiti</p>
+                    <p class="lead text-dark">{{ __('ui.sottotitolo_hero') }}</p>
                     <a href="{{ route('post.create') }}"
-                        class="btn btn-dark btn-lg rounded-pill px-4 py-2 shadow-sm btn-cta">Crea annuncio</a>
+                        class="btn btn-dark btn-lg rounded-pill px-4 py-2 shadow-sm btn-cta">{{ __('ui.crea_annuncio') }}</a>
                 </div>
                 <div class="col-12 col-lg-6 jumbotron py-4 animate-fade-right">
                     <picture>

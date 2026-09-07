@@ -9,14 +9,14 @@
             </a>
             <ul class="nav col-md-4 justify-content-end">
                 <li class="nav-item">
-                    <a href="/" class="nav-link px-2 text-body-secondary">Home</a>
+                    <a href="/" class="nav-link px-2 text-body-secondary">{{ __('ui.home') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-2 text-body-secondary">Annunci</a>
+                    <a href="#" class="nav-link px-2 text-body-secondary">{{ __('ui.annunci') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('application.revisor') }}" class="nav-link px-2 text-body-secondary">Diventa
-                        Revisore</a>
+                    <a href="{{ route('application.revisor') }}" class="nav-link px-2 text-body-secondary">{{ __('ui.diventa_revisore') }}
+                       </a>
                 </li>
             </ul>
         </footer>
