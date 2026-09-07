@@ -2,11 +2,14 @@
 
 namespace App\Livewire;
 
+use App\Jobs\ResizeImage;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+
 
 class PostCreate extends Component
 {
@@ -49,21 +52,25 @@ class PostCreate extends Component
     public function postStore()
     {
         $this->validate();
-        $this->user_id = Auth::user()->id;
+        
 
-        $post = Post::create([
+        $this->post = Post::create([
             'title' => $this->title,
             'price' => $this->price,
             'description' => $this->description,
-            'user_id' => $this->user_id,
             'category_id' => $this->category_id,
+            'user_id' => Auth::id(),
         ]);
 
         if (count($this->images) > 0) {
             foreach ($this->images as $image) {
-                $this->post->images()->create(['path' => $image->store('images', 'public')]);
+                $newFileName = "post/{$this->post->id}";
+                $newImage = $this->post->images()->create(['path' => $image->store($newFileName, 'public')]);
+                dispatch(new ResizeImage($newImage->path, 300, 300));
             }
+            File::deleteDirectory(storage_path('/app/livewire-tmp'));
         }
+        session()->flash('success', 'Articolo creato con successo');
 
         $this->cleanForm();
 
