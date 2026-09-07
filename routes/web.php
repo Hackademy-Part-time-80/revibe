@@ -9,6 +9,9 @@ use App\Livewire\PostCreate;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Auth;
 
+//route lingua
+Route::post('/lingua/{lang}', [PublicController::class, 'setLanguage'])->name('setLocale');
+
 // Route Home
 Route::get('/', [PublicController::class, 'home'])->name('homepage');
 

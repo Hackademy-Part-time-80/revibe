@@ -59,6 +59,9 @@
 
                 {{-- Cosa vede l'utente loggato --}}
                 <div class="d-flex align-items-center gap-3">
+                    <x-_locale lang="it" />
+                    <x-_locale lang="en" />
+                    <x-_locale lang="es" />
                     @auth
                         @if (Auth::user()->isRevisor)
                             <a href="{{ route('revisor.index') }}" class="btn btn-primary position-relative">
