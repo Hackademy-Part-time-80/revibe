@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236 92" width="236" height="92">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@700&amp;display=swap');
+      .wordmark { font-family: 'Unbounded', ui-sans-serif, system-ui, sans-serif; font-weight: 700; }
+    </style>
+  </defs>
+  <text x="2" y="50" font-size="44" letter-spacing="-0.3" class="wordmark" fill="#201C22">ReVibe</text>
+  <path d="M2,74 Q12,64 22,74 Q32,84 42,74 Q52,64 62,74 Q72,84 82,74 Q92,64 102,74 Q112,84 122,74 Q132,64 142,74 Q152,84 162,74 Q172,64 182,74 Q192,84 202,74 Q212,64 222,74"
+    stroke="#1F4A3D" stroke-width="5" stroke-linecap="round" fill="none" />
+</svg>
