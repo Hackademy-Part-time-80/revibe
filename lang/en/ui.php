@@ -11,13 +11,18 @@ return [
     'registrati' => 'Register',
     'diventa_revisore' => 'Become a Revisor',
 
+    // tutti gli annunci
+    'tutti_annunci' => 'All listings',
+    'disp_su_revibe' => 'listings on',
+    'nessun_annuncio' => 'There are no listings yet, add a new one',
+
     // Testi della pagina
     'sottotitolo_hero' => 'Give new life to your favorite items',
     'bottone_dettagli' => 'Discover the details',
 
     //creazione annuncio
     'crea' => 'Post',
-    'anteprimaFoto' => 'Pictures added',
+    'anteprimaFoto' => 'Pictures:',
     'immagini' => 'Images',
     'selezioneCategoria' => 'Select category',
     'categoria' => 'Category',
@@ -41,4 +46,8 @@ return [
     'Lavoro e Corsi' => 'Jobs & Courses',
     'Servizi' => 'Services',
     'Animali' => 'Pets',
+
+    // Cards
+    'scopri_dettagli' => 'Show details',
+
 ];

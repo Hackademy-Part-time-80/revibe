@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row py-5 justify-content-center align-items-center text-center">
             <div class="col-12 pt-5">
-                <h1 class="d-flex fw-bold">Tutti gli Annunci</h1>
-                <p class="d-flex text-muted fs-5 mt-2">{{ $posts->total() }} annunci disponibili su ReVibe</p>
+                <h1 class="d-flex fw-bold">{{ __('ui.tutti_annunci') }}</h1>
+                <p class="d-flex text-muted fs-5 mt-2">{{ $posts->total() }} {{ __('ui.disp_su_revibe') }} ReVibe</p>
             </div>
         </div>
         <div class="row g-4 justify-content-start py-4">
@@ -13,7 +13,7 @@
                 </div>
             @empty
                 <div class="col-12 text-center py-5">
-                    <h3 class="text-muted">Non sono ancora stati creati annunci!</h3>
+                    <h3 class="text-muted">{{ __('ui.nessun_annuncio') }}</h3>
                     @auth
                         <a href="{{ route('post.create') }}" class="btn btn-primary btn-lg my-4">
                             Pubblica un annuncio

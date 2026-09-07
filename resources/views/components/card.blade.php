@@ -8,22 +8,25 @@
                 <div class="carousel-inner">
                     @foreach ($post->images as $image)
                         <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                            <img src="{{ Storage::url($image->path) }}" class="card-img-top" alt="Immagine articolo" style="height: 250px; object-fit: cover;">
+                            <img src="{{ Storage::url($image->path) }}" class="card-img-top" alt="Immagine articolo"
+                                style="height: 250px; object-fit: cover;">
                         </div>
                     @endforeach
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselCard{{ $post->id }}" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselCard{{ $post->id }}"
+                    data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselCard{{ $post->id }}" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselCard{{ $post->id }}"
+                    data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
         @else
-            <img src="{{ $post->images->isNotEmpty() ? Storage::url($post->images->first()->path) : 'https://picsum.photos/500/350?random=' . ($post->id ?? rand(1, 1000)) }}" class="card-img-top"
-                alt="Immagine articolo" style="height: 250px; object-fit: cover;">
+            <img src="{{ $post->images->isNotEmpty() ? Storage::url($post->images->first()->path) : 'https://picsum.photos/500/350?random=' . ($post->id ?? rand(1, 1000)) }}"
+                class="card-img-top" alt="Immagine articolo" style="height: 250px; object-fit: cover;">
         @endif
         <a href="{{ route('categoryView', $post->category) }}"
             class="position-absolute top-0 start-0 text-decoration-none" style="z-index: 10;">
@@ -53,7 +56,7 @@
         <div class="d-grid gap-2 mt-auto">
             <a href="{{ route('posts.show', $post) }}"
                 class="btn btn-primary rounded-pill py-2 fw-semibold transition-all">
-                Scopri i dettagli
+                {{ __('ui.scopri_dettagli') }}
             </a>
         </div>
     </div>
