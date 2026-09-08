@@ -1,23 +1,22 @@
  <x-layouts.app>
      <div class="container-fluid">
-         <div class="row">
-             <div class="col-lg-3 col-md-4 mb-4">
-                 <div class="rounded shadow bg-body-secondary p-4 text-center">
-                     <h1 class="h3 fw-bold mb-0">Revisore di ReVibe</h1>
-                     <p class="text-muted mb-2">Dashboard</p>
+         <div class="row m-3">
+             
+                 <div class="rounded shadow bg-body-secondary p-4 text-start">
+                     <h1 class="d-inline-block h3 fw-bold mb-0 ">Dashboard Revisore</h1>
                      <span class="badge bg-primary text-white fs-6 shadow-sm px-3 py-2 rounded-pill">
                          Da revisionare: <span class="fw-bold">{{ \App\Models\Post::toBeRevisedCount() }}</span>
                      </span>
-                 </div>
+                 
              </div>
 
-             <div class="col-lg-9 col-md-8">
+             <div class="col-md-12">
                  @if (session('message'))
                      <div class="alert alert-success">{{ session('message') }}</div>
                  @endif
 
                  @if (session()->has('last_reviewed_post_id'))
-                     <div class="text-muted mb-3" id="undoBox">
+                     <div class="text-muted m-3" id="undoBox">
                          <form action="{{ route('revisor.undo') }}" method="POST" class="d-inline">
                              @csrf
                              @method('PATCH')
@@ -29,8 +28,9 @@
                  @endif
 
                  @if ($postToCheck)
-                     <div class="row g-4">
-                         <div class="col-md-7">
+                 <div class="d-flex justify-content-between">
+                     <div class="row m-3">
+                         <div class="col-12 col-sm-6 my-3">
                              <div class="text-center">
                                 @if ($postToCheck->images->count() > 1)
                                     <div id="carouselExampleRevisor" class="carousel slide" data-bs-ride="carousel">
@@ -59,7 +59,7 @@
                              </div>
                          </div>
 
-                         <div class="col-md-5">
+                         <div class="col-12 col-sm-6">
                              <div
                                  class="bg-body-secondary rounded shadow p-4 h-100 d-flex flex-column justify-content-between">
                                  <div>
@@ -85,6 +85,7 @@
                              </div>
                          </div>
                      </div>
+             </div>
                  @else
                      <div class="row justify-content-center align-items-center text-center" style="min-height: 60vh;">
                          <div class="col-12">
