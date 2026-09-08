@@ -35,9 +35,9 @@
                                 @if ($postToCheck->images->count() > 1)
                                     <div id="carouselExampleRevisor" class="carousel slide" data-bs-ride="carousel">
                                         <div class="carousel-inner shadow-sm rounded">
-                                            @foreach ($postToCheck->images as $image)
+                                            @foreach ($postToCheck->images as $key => $image)
                                                 <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                                                    <img src="{{ Storage::url($image->path) }}" class="d-block w-100 img-fluid rounded" alt="Immagine articolo">
+                                                    <img src="{{ $image->getUrl(300, 300) }}" class="d-block w-100 img-fluid rounded" alt="Immagine articolo">
                                                 </div>
                                             @endforeach
                                         </div>

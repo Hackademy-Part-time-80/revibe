@@ -25,7 +25,7 @@
                 </button>
             </div>
         @else
-            <img src="{{ $post->images->isNotEmpty() ? Storage::url($post->images->first()->path) : 'https://picsum.photos/500/350?random=' . ($post->id ?? rand(1, 1000)) }}"
+            <img src="{{ $post->images->isNotEmpty() ? $post->images->first()->getUrl(300, 300) : 'https://picsum.photos/500/350?random=' . ($post->id ?? rand(1, 1000)) }}"
                 class="card-img-top" alt="Immagine articolo" style="height: 250px; object-fit: cover;">
         @endif
         <a href="{{ route('categoryView', $post->category) }}"
