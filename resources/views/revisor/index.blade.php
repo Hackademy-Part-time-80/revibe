@@ -79,7 +79,17 @@
                                                      class="img-fluid rounded-start"
                                                      alt="immagine {{ $key + 1 }} dell'articolo {{ $postToCheck->title }}">
                                              </div>
-                                             <div class="col-md-8 ps-3">
+                                             <div class="col-md-5 ps-3">
+                                                 <h5>Labels</h5>
+                                                 @if ($image->labels)
+                                                     @foreach ($iamge->labels as $label)
+                                                         #{{ $labels }}
+                                                     @endforeach
+                                                 @else
+                                                     <p class="fst-italic">No labels</p>
+                                                 @endif
+                                             </div>
+                                             <div class="col-md-3">
                                                  <div class="card-body">
                                                      <h5>Ratings</h5>
                                                      <div class="row justify-content-center">

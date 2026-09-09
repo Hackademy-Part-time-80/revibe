@@ -7,12 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
+use Override;
 
 class Image extends Model
 {
     use HasFactory;
 
     protected $fillable = ['path'];
+
+    #[Override]
+    protected function casts(): array
+    {
+        return [
+            'labels' => 'array',
+        ];
+    }
 
     public function post(): BelongsTo
     {
@@ -21,7 +30,7 @@ class Image extends Model
 
     public static function getUrlByFilePath($filePath, $w = null, $h = null)
     {
-        if(!$w && !$h) {
+        if (!$w && !$h) {
             return Storage::url($filePath);
         }
         $path = dirname($filePath);
