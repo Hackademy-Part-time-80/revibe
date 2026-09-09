@@ -70,7 +70,7 @@
 
 
                              {{-- verifica tramite Google vision --}}
-                             @foreach ($postToCheck->images as $key => $image)
+                             {{-- @foreach ($postToCheck->images as $key => $image)
                                  <div class="col-6">
                                      <div class="card mb-3">
                                          <div class="row g-0">
@@ -132,7 +132,7 @@
                                          </div>
                                      </div>
                                  </div>
-                             @endforeach
+                             @endforeach --}}
 
                              {{-- Contenuto --}}
                              <div class="col-12 col-sm-6">
