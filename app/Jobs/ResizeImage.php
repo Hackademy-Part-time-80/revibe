@@ -9,6 +9,7 @@ use Spatie\Image\Enums\CropPosition;
 use Spatie\Image\Image;
 use Spatie\Image\Enums\ImageDriver;
 
+
 class ResizeImage implements ShouldQueue
 {
     use Queueable;
