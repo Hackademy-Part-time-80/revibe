@@ -4,7 +4,7 @@ namespace App\Jobs;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
-use SebastianBergmann\CodeCoverage\Report\Xml\Unit;
+use Spatie\Image\Enums\Unit;
 use Spatie\Image\Enums\CropPosition;
 use Spatie\Image\Image;
 use Spatie\Image\Enums\ImageDriver;
@@ -19,7 +19,7 @@ class ResizeImage implements ShouldQueue
     private $w, $h, $fileName, $path;
     public function __construct($filePath, $w, $h)
     {
-        $this->path = dirname($filePath);
+        $this->path = dirName($filePath);
         $this->fileName = basename($filePath);
         $this->w = $w;
         $this->h = $h;
@@ -32,13 +32,10 @@ class ResizeImage implements ShouldQueue
     {
         $w = $this->w;
         $h = $this->h;
-        $srcPath = storage_path().'/app/public' . $this->path . '/' . $this->fileName; 
-        $destPath = storage_path().'/app/public' . $this->path . "/crop_{$w}x{$h}" . $this->fileName;
+        $srcPath = storage_path().'/app/public/' . $this->path . '/' . $this->fileName; 
+        $destPath = storage_path().'/app/public/' . $this->path . "/crop_{$w}x{$h}_" . $this->fileName;
 
-        Image::useImageDriver(ImageDriver::Gd)->load($srcPath)
-        ->crop($w,$h, CropPosition::Center)
-        ->watermark(
-            base_path('resources/images/watermark.png'),
+        Image::useImageDriver(ImageDriver::Gd)->load($srcPath)->crop($w,$h, CropPosition::Center)->watermark(base_path('resources/images/watermark.svg'),
         paddingX: 5,
         paddingY: 5,
         width: 50,

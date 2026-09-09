@@ -29,7 +29,7 @@ class RemoveFaces implements ShouldQueue
      */
     public function handle(): void
     {
-         $i = Image::find($this->post_image_id);
+        $i = Image::find($this->post_image_id);
         if (!$i) {
             return;
         }
@@ -73,5 +73,3 @@ class RemoveFaces implements ShouldQueue
         $imageAnnotator->close();
     }
 }
-
-

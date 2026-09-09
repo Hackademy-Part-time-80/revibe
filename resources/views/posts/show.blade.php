@@ -32,7 +32,7 @@
             <div class="col-md-6">
                 <div class="d-flex align-items-center mb-2">
                     <a href="{{ route('categoryView', $post->category) }}" class="text-decoration-none">
-                        <span class="badge bg-info text-white px-3 py-2 rounded-pill fw-bold shadow-sm">
+                        <span class="bg-primary text-white px-3 py-1 m-3 rounded-pill small fw-bold shadow-sm d-inline-block hover-opacity" style="opacity: 0.8;">
                             {{ $post->category->name ?? 'Categoria' }}
                         </span>
                     </a>
