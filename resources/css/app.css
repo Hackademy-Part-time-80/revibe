@@ -1,5 +1,6 @@
 @import 'bootstrap';
 @import "bootstrap-icons/font/bootstrap-icons.css";
+@import 'bootstrap-icons';
 
 
 /* Da non modificare, esperimenti in corso DANGER */
@@ -79,17 +80,19 @@
 
 .card {
     transition: all 0.3s ease;
-    background: #E9EFE6;              /* verde salvia molto chiaro */
-  border: 1.5px solid #022b1e;      /* il tuo verde primario, resta ben visibile sopra */
-  border-radius: 12px;
-   
+    background: #E9EFE6;
+    /* verde salvia molto chiaro */
+    border: 1.5px solid #022b1e;
+    /* il tuo verde primario, resta ben visibile sopra */
+    border-radius: 12px;
+
 }
 
 
 .card-inner {
-  border: 1px solid rgba(23,21,26,0.15);
-  border-radius: 8px;
-  padding: 1rem;
+    border: 1px solid rgba(23, 21, 26, 0.15);
+    border-radius: 8px;
+    padding: 1rem;
 }
 
 .card:hover {
@@ -162,8 +165,9 @@
     border-radius: 1rem;
     box-shadow: 0 1rem 3rem rgba(23, 21, 26, 0.12);
 }
+
 /* la visualizzazione dell'immagine di anteprima è gestita tramite background-image, quindi non è necessario un tag <img> */
-.img-preview{
+.img-preview {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
