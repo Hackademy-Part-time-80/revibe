@@ -16,14 +16,14 @@ class GoogleVisionSafeSearch implements ShouldQueue
 {
     use Queueable;
 
-    private $articleImageId;
+    private $article_image_id;
 
     /**
      * Create a new job instance.
      */
-    public function __construct($articleImageId)
+    public function __construct($article_image_id)
     {
-        $this->articleImageId = $articleImageId;
+        $this->article_image_id = $article_image_id;
     }
 
     /**
@@ -31,7 +31,7 @@ class GoogleVisionSafeSearch implements ShouldQueue
      */
     public function handle(): void
     {
-        $i = Image::find($this->articleImageId);
+        $i = Image::find($this->article_image_id);
         if (!$i) {
             return;
         }
