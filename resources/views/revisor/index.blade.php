@@ -10,7 +10,7 @@
 
              </div>
 
-             <div class="col-md-12">
+             <div class="container">
                  @if (session('message'))
                      <div class="alert alert-success">{{ session('message') }}</div>
                  @endif
@@ -30,47 +30,79 @@
 
                  {{-- Post da revisionare --}}
                  @if ($postToCheck)
-                     <div class="d-flex justify-content-between">
+                     <div>
                          <div class="row m-3">
-                             <div class="col-12 col-sm-6 my-3">
+                             <div class="col-12 col-lg-6 my-3">
                                  <div class="text-center">
                                      {{-- Immagini --}}
                                      @if ($postToCheck->images->count() > 1)
-                                         <div id="carouselExampleRevisor" class="carousel slide"
+
+                                         <div id="carouselExampleRevisor"
+                                             class="carousel slide ratio ratio-4x3 shadow-sm rounded"
                                              data-bs-ride="carousel">
-                                             <div class="carousel-inner shadow-sm rounded">
+                                             <div class="carousel-inner">
                                                  @foreach ($postToCheck->images as $key => $image)
-                                                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                                                     <div
+                                                         class="carousel-item h-100 {{ $loop->first ? 'active' : '' }}">
+
                                                          <img src="{{ $image->getUrl(300, 300) }}"
-                                                             class="d-block w-100 img-fluid rounded"
-                                                             alt="Immagine articolo">
+                                                             class="img-fluid rounded" alt="Immagine articolo">
                                                      </div>
                                                  @endforeach
                                              </div>
-                                             <button class="carousel-control-prev" type="button"
-                                                 data-bs-target="#carouselExampleRevisor" data-bs-slide="prev">
-                                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                 <span class="visually-hidden">Previous</span>
-                                             </button>
                                              <button class="carousel-control-next" type="button"
                                                  data-bs-target="#carouselExampleRevisor" data-bs-slide="next">
-                                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                 <span class="carousel-control-next-icon visually-hidden"
+                                                     aria-hidden="true"></span>
                                                  <span class="visually-hidden">Next</span>
                                              </button>
                                          </div>
                                      @elseif ($postToCheck->images->count() == 1)
-                                         <img src="{{ Storage::url($postToCheck->images->first()->path) }}"
-                                             class="img-fluid rounded shadow-sm md-auto mb-2" alt="Immagine articolo">
+                                         <div class="ratio ratio-4x3">
+                                             <img src="{{ Storage::url($postToCheck->images->first()->path) }}"
+                                                 class="rounded shadow-sm mx-auto mb-2 object-fit-contain"
+                                                 alt="Immagine articolo">
+                                         </div>
                                      @else
-                                         <img src="https://picsum.photos/800/600?random={{ $postToCheck->id ?? rand(1, 1000) }}"
-                                             class="img-fluid rounded shadow-sm md-auto" alt="Immagine articolo">
+                                         <div class="ratio ratio-4x3">
+                                             <img src="https://picsum.photos/800/600?random={{ $postToCheck->id ?? rand(1, 1000) }}"
+                                                 class="rounded shadow-sm mx-auto object-fit-contain"
+                                                 alt="Immagine articolo">
+                                         </div>
                                      @endif
                                  </div>
                              </div>
 
-
+                             {{-- Contenuto --}}
+                             <div class="col-12 col-lg-6 my-3">
+                                 <div
+                                     class="bg-body-secondary rounded shadow p-4 d-flex flex-column justify-content-between h-100">
+                                     <div>
+                                         <h2 class="fw-bold">{{ $postToCheck->title }}</h2>
+                                         <h4 class="text-primary mb-2">{{ $postToCheck->price }} €</h4>
+                                         <p class="fst-italic text-muted mb-3">di {{ $postToCheck->user->name }}</p>
+                                         <p class="mb-4">{{ $postToCheck->description }}</p>
+                                     </div>
+                                     <div class="d-flex gap-2">
+                                         <form action="{{ route('revisor.reject', $postToCheck) }}" method="POST"
+                                             class="w-100">
+                                             @csrf
+                                             @method('PATCH')
+                                             <button class="btn btn-outline-danger w-100 fw-bold">Rifiuta</button>
+                                         </form>
+                                         <form action="{{ route('revisor.accept', $postToCheck) }}" method="POST"
+                                             class="w-100">
+                                             @csrf
+                                             @method('PATCH')
+                                             <button class="btn btn-success w-100 fw-bold">Accetta</button>
+                                         </form>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="d-flex flex-column align-items-center">
                              {{-- verifica tramite Google vision --}}
-                             {{-- @foreach ($postToCheck->images as $key => $image)
+                             @foreach ($postToCheck->images as $key => $image)
                                  <div class="col-6">
                                      <div class="card mb-3">
                                          <div class="row g-0">
@@ -82,8 +114,8 @@
                                              <div class="col-md-5 ps-3">
                                                  <h5>Labels</h5>
                                                  @if ($image->labels)
-                                                     @foreach ($iamge->labels as $label)
-                                                         #{{ $labels }}
+                                                     @foreach ($image->labels as $label)
+                                                         {{ $label }}
                                                      @endforeach
                                                  @else
                                                      <p class="fst-italic">No labels</p>
@@ -132,34 +164,7 @@
                                          </div>
                                      </div>
                                  </div>
-                             @endforeach --}}
-
-                             {{-- Contenuto --}}
-                             <div class="col-12 col-sm-6">
-                                 <div
-                                     class="bg-body-secondary rounded shadow p-4 h-100 d-flex flex-column justify-content-between">
-                                     <div>
-                                         <h2 class="fw-bold">{{ $postToCheck->title }}</h2>
-                                         <h4 class="text-primary mb-2">{{ $postToCheck->price }} €</h4>
-                                         <p class="fst-italic text-muted mb-3">di {{ $postToCheck->user->name }}</p>
-                                         <p class="mb-4">{{ $postToCheck->description }}</p>
-                                     </div>
-                                     <div class="d-flex gap-2">
-                                         <form action="{{ route('revisor.reject', $postToCheck) }}" method="POST"
-                                             class="w-100">
-                                             @csrf
-                                             @method('PATCH')
-                                             <button class="btn btn-outline-danger w-100 fw-bold">Rifiuta</button>
-                                         </form>
-                                         <form action="{{ route('revisor.accept', $postToCheck) }}" method="POST"
-                                             class="w-100">
-                                             @csrf
-                                             @method('PATCH')
-                                             <button class="btn btn-success w-100 fw-bold">Accetta</button>
-                                         </form>
-                                     </div>
-                                 </div>
-                             </div>
+                             @endforeach
                          </div>
                      </div>
                  @else
