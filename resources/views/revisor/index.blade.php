@@ -218,4 +218,31 @@
          </div>
      </div>
 
+
+     <script>
+         document.addEventListener('DOMContentLoaded', function() {
+             const carouselImages = document.getElementById('carouselImages');
+             const carouselVision = document.getElementById('carouselVision');
+
+             if (carouselImages && carouselVision) {
+                 // Ascolta l'evento di scorrimento del primo carousel
+                 carouselImages.addEventListener('slide.bs.carousel', function(event) {
+                     // Recupera l'indice della diapositiva di destinazione (event.to)
+                     const targetIndex = event.to;
+
+                     // Trova l'elemento target dentro il carousel Vision e lo attiva
+                     const visionItems = carouselVision.querySelectorAll('.carousel-item');
+                     const currentActive = carouselVision.querySelector('.carousel-item.active');
+
+                     if (currentActive) {
+                         currentActive.classList.remove('active');
+                     }
+                     if (visionItems[targetIndex]) {
+                         visionItems[targetIndex].classList.add('active');
+                     }
+                 });
+             }
+         });
+     </script>
+
  </x-layouts.app>
